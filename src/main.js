@@ -3,24 +3,7 @@ import Register from './pages/register.js';
 import Post from './pages/post.js';
 import Update from './pages/update.js'
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCd7cl5bTaNjihZaOyywCmKI2wMJTpACtc",
-  authDomain: "heroinassquad2.firebaseapp.com",
-  databaseURL: "https://heroinassquad2.firebaseio.com",
-  projectId: "heroinassquad2",
-  storageBucket: "heroinassquad2.appspot.com",
-  messagingSenderId: "459262868374",
-  appId: "1:459262868374:web:6e00aa195a92de75d17bb7"
-};
-firebase.initializeApp(firebaseConfig);
-
-// function init() {
-//   document.querySelector('main').innerHTML = Login();
-// }
-
-window.addEventListener('load', acesspages);
-
-function acesspages () {
+function hashWay () {
   firebase.auth().onAuthStateChanged(function (user) {
   switch (location.hash) {
     case "#register":
@@ -40,5 +23,5 @@ function acesspages () {
   }})
 }
 
-window.addEventListener('hashchange', acesspages, false);
-window.addEventListener('load', acesspages);
+window.addEventListener('hashchange', hashWay, false);
+window.addEventListener('load', hashWay);

@@ -8,17 +8,22 @@
   background-image: radial-gradient(#ffbb36 5%, #E85531);
   height: auto;
 }
-img {
-  height: 120px;
+.header-post {
   display: flex;
-  margin: auto;
+  background-image: radial-gradient(#ffbb36 5%, #E85531);
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  margin: 0;
 }
 .name-network {
   color: #FF1C14;
   font-size: 200%;
-  margin: auto;
+  margin: 0;
   text-align: center;
-  padding: 5%;
+  padding: 1%;
 }
 .text-simple {
   text-align: center;
@@ -48,6 +53,15 @@ img {
   display: block;
   margin: auto
 }
+#forget.primary-button{
+  background-color: transparent;
+  padding: 1%;
+  margin: 0.5%;
+  font-size: 0.9rem;
+  font-weight: none;
+  border: none;
+  cursor: pointer;
+}
 #create-account.primary-button{
   margin: 5%;
 }
@@ -64,7 +78,6 @@ img {
 .primary-button:hover {
   color: #E85531;
 }
-
 .primary-input  {
   border-radius: 15px;
   display: flex;
@@ -72,8 +85,23 @@ img {
   margin: 2%;
 }
 .js-post {
-  height: 150px;
-  width: 300px
+  height: 80px;
+  width: 250px
+}
+.description {
+  display: flex;
+  justify-content: flex-start;
+  justify-items: center;
+  font-weight: bolder;
+}
+.avatar {
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+.card {
+  border: 1px solid #E85531;
+  display: flex;
 }
 
 @media screen and (min-width: 992px){
@@ -96,4 +124,5 @@ img {
   .primary-input  {
     width: 60%;
   }
+  
 }

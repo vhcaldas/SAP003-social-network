@@ -1,9 +1,9 @@
 function PostCard(props) {
     const template = `
-    <div class="card">
+    <li class="card">
       <p>${props.name}</p>
       <p>${props.post}</p>
-    </div>
+    </li>
     `;
     return template;
 }

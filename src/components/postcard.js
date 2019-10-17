@@ -1,6 +1,7 @@
 function PostCard(props) {
     const template = `
-    <li class="card">
+    <li id=${props.id} class="card">
+      <p>${props.data}</p>
       <p>${props.name}</p>
       <p>${props.post}</p>
     </li>

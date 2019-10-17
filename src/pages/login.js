@@ -4,7 +4,7 @@ import Input from '../components/input.js';
 function Login() {
   const template = `
   <div class="box">
-    <header class="header"><img src="./Imagens/header-logo.png" height="200"></header>
+    <header class="header"><img src="./Imagens/header-logo.png"></header>
     <section class = "login-box">
       <h1 class="name-network">Heroínas</h1>
       <h3 class="text-simple">Bem vinda, programadora!</h3>

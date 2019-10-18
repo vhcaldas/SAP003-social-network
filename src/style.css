@@ -1,8 +1,6 @@
 * {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  padding: 0;
-  justify-content: inherit;
 }
 .header {
   background-image: radial-gradient(#ffbb36 5%, #E85531);
@@ -51,6 +49,26 @@ img {
 #create-account.primary-button{
   margin: 5%;
 }
+#delete.primary-icon{
+  position: absolute;
+  right: 5%;
+  margin: 1%
+}
+#like.primary-icon{
+  position: absolute;
+  left: 15%;
+  margin-top: 8%;
+}
+#edit.primary-icon{
+  position: absolute;
+  left: 25%;
+  margin-top: 8%;
+}
+#save.primary-icon{
+  position: absolute;
+  left: 35%;
+  margin-top: 10%
+}
 .primary-button {
   background-color: #FFC44F;
   padding: 2%;
@@ -64,39 +82,38 @@ img {
 .primary-button:hover {
   color: #E85531;
 }
-
+.post-box{
+  margin: 5% 1%;
+  display: flex;
+  justify-content: center;
+}
 .primary-input  {
   border-radius: 15px;
-  display: flex;
   padding: 5px;
   margin: 2%;
 }
 .js-post {
-  height: 150px;
-  width: 300px
+  height: 100px;
+  width: 80%;
 }
-
 .description {
   display: flex;
   justify-content: flex-start;
   padding: 6%;
 }
-
 .avatar {
   height: 70px;
   margin: 0;
 }
-
 .name-display{
   margin-left: 10%;
 }
-
 .card {
   display: flex;
   flex-flow: wrap-reverse;
-  margin: 10%;
-  height: 3em;
-  width: auto;
+  margin: 1%;
+  height: 8em;
+  width: 90%;
   padding: 2%;  
   border-radius: 10px;
   box-shadow: 3px 3px 10px 1px #ff1c14;
@@ -105,21 +122,22 @@ img {
 .card-name{
   display: inline-block;
   font-size: 90%;
-
 }
 .card-post {
   display: inline-block;
 }
-
 .card-time {
   display: inline-block;
   font-size: 70%;
   align-self: flex-start;
   justify-content: flex-end;
-  position: absolute;
-  right: 0;
   padding: 1%;
-
+}
+.menu {
+  display: flex;
+  padding: 5%;
+  justify-content: space-around;
+  list-style: none;
 }
 
 @media screen and (min-width: 992px){

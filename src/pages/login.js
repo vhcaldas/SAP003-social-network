@@ -39,7 +39,7 @@ function Login() {
     <p class="alertMessage"></p>
     <p class="text-simple">Não tem uma conta?</p>
     ${Button({
-    id: 'register',
+    id: "register",
     title: 'Registre-se',
     onClick: HashRegister
     })}

@@ -94,3 +94,4 @@ function HashRegister() {
 }
 
 export default Login;
+''

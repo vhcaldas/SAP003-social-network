@@ -20,18 +20,21 @@ function Login() {
         type: 'password',
         })}
         ${Button({
+        type: 'submit',
         id: 'btnLogin',
         title: 'Login',
         onClick: sendLogin,
         })}
         ${Button({
+        type: 'submit',
         id: 'forget',
         title: 'Esqueci a senha',
         onClick: forgetPassword,
         })}
         <p class="text-simple">Ou entre com:</p>
         ${Button({
-        id: "iGoogle",
+        type: 'submit',
+        id: 'iGoogle',
         title: '<i class="fab fa-google"></i>',
         onClick: loginGoogle,
         })}
@@ -39,7 +42,8 @@ function Login() {
     <p class="alertMessage"></p>
     <p class="text-simple">Não tem uma conta?</p>
     ${Button({
-    id: "register",
+    type: 'submit',
+    id: 'register',
     title: 'Registre-se',
     onClick: HashRegister
     })}

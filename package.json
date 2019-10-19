@@ -35,5 +35,17 @@
   },
   "dependencies": {
     "serve": "^11.2.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhcaldas/SAP003-social-network.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/vhcaldas/SAP003-social-network/issues"
+  },
+  "homepage": "https://github.com/vhcaldas/SAP003-social-network#readme"
 }

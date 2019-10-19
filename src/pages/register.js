@@ -26,6 +26,7 @@ function Register() {
       })}
       <p class="alertMessage"></p>
         ${Button({
+        type: 'submit',
         id: 'create-account',
         title: 'Criar Conta',
         onClick: createCount,

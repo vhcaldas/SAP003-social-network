@@ -1,7 +1,7 @@
 function Icons(props) {
     const template = `
       <button
-        class="primary-icon" 
+        class="primary-icon-${props.class}" 
         data-id= ${props.dataId}
         onclick="button.handleClick(event, ${props.onClick})" >
         ${props.title}

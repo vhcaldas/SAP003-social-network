@@ -15,6 +15,7 @@ function Update() {
         type: 'email',
         })}
         ${Button({
+        type: 'submit',
         id: 'up',
         title: 'Enviar email para redefinir senha',
         onClick: sendEmail,

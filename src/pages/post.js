@@ -1,7 +1,7 @@
 import Input from '../components/input.js';
 import Button from '../components/button.js';
 import PostCard from '../components/postcard.js';
-import Icons from '../components/icons.js'
+import Icons from '../components/icons.js';
 
 function loadPost() {
   const email = firebase.auth().currentUser.emailVerified;
@@ -11,9 +11,10 @@ function loadPost() {
       snap.forEach((doc) => {
         templatePosts({
           dataId: doc.id, 
+          like: doc.data().likes,
           name: doc.data().name, 
           post: doc.data().post, 
-          time: doc.data().data.toDate().toLocaleString("pt-BR") });
+          time: doc.data().data.toDate().toLocaleString("pt-BR")});
       });
     });
 }
@@ -21,11 +22,11 @@ function loadPost() {
 function templatePosts(props) {
   const timeline = document.getElementById("history")
   timeline.innerHTML += `<div data-id=${props.dataId} class='post-box'> 
-    ${Icons({dataId:props.dataId, title:'<i class="fas fa-trash-alt"></i>',onClick: deletePost,})}
+    ${Icons({dataId:props.dataId, class:'delete', title:'<i class="fas fa-trash-alt"></i>',onClick: deletePost,})}
     ${PostCard(props)} 
-    ${Icons({dataId:props.dataId, id:'like', title:'<i class="far fa-heart"></i>️',onClick: likePost,})}
-    ${Icons({dataId:props.dataId, id:'edit',title:'<i class="fas fa-edit"></i>',onClick: editPost,})}
-    ${Icons({dataId:props.dataId, id:'save',title:'<i class="far fa-save"></i>',onClick: SavePost,})}</div>`
+    ${Icons({dataId:props.dataId, class:'like', title:`<i class="fas fa-heart"> ${props.like}</i>`,onClick: likePost,})}
+    ${Icons({dataId:props.dataId, class:'edit',title:'edit',onClick: editPost,})}
+    ${Icons({dataId:props.dataId, class:'save',title:'<i class="far fa-save"></i>',onClick: savePost,})}</div>`
 }
 
 function Post() {
@@ -51,6 +52,7 @@ function Post() {
     type: 'text',
   })}
     ${Button({
+    type: 'submit',
     id: 'share',
     title: 'Compartilhar',
     onClick: SharePost,
@@ -84,9 +86,9 @@ function SharePost() {
 }
 
 function deletePost(event) {
-  const idPost = event.target.dataset.id
-  firebase.firestore().collection('Posts').doc(idPost).delete()
-  event.target.parentElement.remove()
+  const idPost = event.target.dataset.id;
+  firebase.firestore().collection('Posts').doc(idPost).delete();
+  event.target.parentElement.remove();
 }
 
 function likePost(event) {
@@ -94,24 +96,27 @@ function likePost(event) {
   const x = firebase.firestore().collection('Posts').doc(idPost).get().then((doc) => doc.data().likes)
   console.log(x)
   firebase.firestore().collection('Posts').doc(idPost).update({
-    likes: 5
-  })
+    likes: x,
+  }) 
 }
 
 function editPost(event) {
-  const idPost = event.target.dataset.id
-  const valor = document.getElementById(idPost).getElementsByClassName('card-post')[0];
-  valor.setAttribute('contentEditable', 'true')
-  console.log(valor)
-  //event.target.parentElement.update()
+  const idPost = event.target.dataset.id;
+  const select = document.getElementsByClassName('card-post')[0];
+  select.setAttribute('contentEditable', 'true')
+  console.log(select)
 }
 
-function SavePost(event) {
+function savePost(event) {
   const idPost = event.target.dataset.id
-  const valor = document.getElementById(idPost).getElementsByClassName('card-post')[0];
-  valor.setAttribute('contentEditable', 'true')
-  console.log(valor)
-  //event.target.parentElement.update()
+  const newtext = document.getElementById(idPost).getElementsByClassName('card-post')[0];
+  console.log(newtext)
 }
 
 export default Post;
+
+window.post = {
+  deletePost,
+  editPost,
+  savePost
+}

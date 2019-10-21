@@ -26,7 +26,9 @@ function templatePosts(props) {
     ${PostCard(props)} 
     ${Icons({id:props.dataId, class:'like', title:`<i class="fas fa-heart"> ${props.like}</i>`,onClick: likePost,})}
     ${Icons({id:props.dataId, class:'edit',title:'edit',onClick: editPost,})}
+    ${Icons({id:props.dataId, class:'save',title:'save',onClick: savePost,})}
     </div>`
+    document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none'
 }
 
 function Post() {
@@ -104,21 +106,23 @@ function editPost(event) {
   const idPost = event.target.id;
   const select = document.getElementById(idPost).getElementsByClassName('card-post')[0];
   select.setAttribute('contentEditable', 'true')
-  select.addEventListener('click', savePost)
-  function savePost() { 
-    console.log('evento oninput funcionando')
-  }
+  document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'inline';
 }
 
-//function savePost(event) {
-  //const idPost = event.target.id
-  //const newtext = document.getElementById(idPost).getElementsByClassName('card-post')[0];
-  
-//}
+
+function savePost(event) {
+  const idPost = event.target.id;
+  const newtext = document.getElementById(idPost).getElementsByClassName('card-post')[0].innerHTML;
+  firebase.firestore().collection('Posts').doc(idPost).update(
+    {post: newtext}
+  );
+  document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'none';
+}
 
 export default Post;
 
 window.post = {
   deletePost,
   editPost,
+  savePost,
 }

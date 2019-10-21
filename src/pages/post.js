@@ -21,12 +21,12 @@ function loadPost() {
 
 function templatePosts(props) {
   const timeline = document.getElementById("history")
-  timeline.innerHTML += `<div data-id=${props.dataId} class='post-box'> 
-    ${Icons({dataId:props.dataId, class:'delete', title:'<i class="fas fa-trash-alt"></i>',onClick: deletePost,})}
+  timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
+    ${Icons({id:props.dataId, class:'delete', title:'<i class="fas fa-trash-alt"></i>',onClick: deletePost,})}
     ${PostCard(props)} 
-    ${Icons({dataId:props.dataId, class:'like', title:`<i class="fas fa-heart"> ${props.like}</i>`,onClick: likePost,})}
-    ${Icons({dataId:props.dataId, class:'edit',title:'edit',onClick: editPost,})}
-    ${Icons({dataId:props.dataId, class:'save',title:'<i class="far fa-save"></i>',onClick: savePost,})}</div>`
+    ${Icons({id:props.dataId, class:'like', title:`<i class="fas fa-heart"> ${props.like}</i>`,onClick: likePost,})}
+    ${Icons({id:props.dataId, class:'edit',title:'edit',onClick: editPost,})}
+    </div>`
 }
 
 function Post() {
@@ -86,7 +86,7 @@ function SharePost() {
 }
 
 function deletePost(event) {
-  const idPost = event.target.dataset.id;
+  const idPost = event.target.id;
   firebase.firestore().collection('Posts').doc(idPost).delete();
   event.target.parentElement.remove();
 }
@@ -96,27 +96,29 @@ function likePost(event) {
   const x = firebase.firestore().collection('Posts').doc(idPost).get().then((doc) => doc.data().likes)
   console.log(x)
   firebase.firestore().collection('Posts').doc(idPost).update({
-    likes: x,
+    likes: 1,
   }) 
 }
 
 function editPost(event) {
-  const idPost = event.target.dataset.id;
-  const select = document.getElementsByClassName('card-post')[0];
+  const idPost = event.target.id;
+  const select = document.getElementById(idPost).getElementsByClassName('card-post')[0];
   select.setAttribute('contentEditable', 'true')
-  console.log(select)
+  select.addEventListener('click', savePost)
+  function savePost() { 
+    console.log('evento oninput funcionando')
+  }
 }
 
-function savePost(event) {
-  const idPost = event.target.dataset.id
-  const newtext = document.getElementById(idPost).getElementsByClassName('card-post')[0];
-  console.log(newtext)
-}
+//function savePost(event) {
+  //const idPost = event.target.id
+  //const newtext = document.getElementById(idPost).getElementsByClassName('card-post')[0];
+  
+//}
 
 export default Post;
 
 window.post = {
   deletePost,
   editPost,
-  savePost
 }

@@ -39,9 +39,13 @@
   padding: 1%;
 }
 .data-perfil{
+  font-weight: bold;
+  font-size: large;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: 2%
+}
 }
 .description {
   display: flex;
@@ -59,6 +63,11 @@ img {
   height: 120px;
   display: flex;
   margin: auto;
+}
+.inputDescription{
+  font-family: 'Handlee', cursive;
+  display: table-cell;
+  padding: 9%;
 }
 .js-post {
   height: 80px;
@@ -96,10 +105,12 @@ img {
 }
 .name-network {
   color: #FF1C14;
-  font-size: 200%;
+  font-size: 350%;
+  font-family: 'Amaranth', sans-serif;
   margin: auto;
   text-align: center;
   padding: 4%;
+  text-shadow: #df7f1d 2px 2px 2px;
 }
 .primary-box{
   display: flex;
@@ -163,6 +174,15 @@ img {
 .text-simple {
   text-align: center;
   padding: 3% 0 1%;
+}
+#saveData {
+  padding: 3%;
+  margin: 5%;
+  background-color: #FFC44F;
+}
+#deleteCount {
+  padding: 3%;
+  background-color: #e86b76;
 }
 #iGoogle.primary-button{
   background-color: #DB4437;
@@ -232,7 +252,33 @@ label[for="btn-menu"]{
     padding: 14% 0 14%;
   }
   .primary-input  {
-    width: 50%;
+    width: 150%;
     margin: 2%
+  }
+  .inputDescription {
+    font-size: 120%;  
+    font-family: 'Handlee', cursive;
+    display:inline-flex ; 
+  }
+  .perfil.primary-input{
+    display:inline-flex; 
+    position: relative;
+    width: 100%;
+  }
+  .name-network{
+    font-size: 450%;
+  }
+  #saveData{
+    display: inline;
+    position: relative;
+    margin-right: 50%;
+  }
+  #deleteCount{
+    display: block;
+    position: absolute;
+    margin-left: 10%;
+    margin-bottom: 2%;
+    margin-top: 19%;
+    padding: 1.5%;
   }
 }

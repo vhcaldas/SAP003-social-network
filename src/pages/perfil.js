@@ -25,27 +25,27 @@ function Perfil() {
       <h1 class="name-network">Heroínas</h1>
       <form class="primary-box">
         <div class="data-perfil">
-        <label>Nome: 
+        <label><p class="inputDescription">Nome:</p> 
         ${Input({
-          class: 'name-perfil',
+          class: 'perfil',
           value:`${firebase.auth().currentUser.displayName}`,
           type: 'text',
         })}</label/>
-        <label>Email: 
+        <label><p class="inputDescription">Email:</p> 
         ${Input({
-          class: 'email-perfil',
+          class: 'perfil',
           value:`${firebase.auth().currentUser.email}`,
           type: 'text',
         })}</label>
-        <label>Trabalho: 
+        <label><p class="inputDescription">Ocupação:</p> 
         ${Input({
-          class: 'perfil-job',
+          class: 'perfil',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-job').value = doc.data().job })}`,
           type: 'text',
         })}</label>
-        <label>Data de nascimento: 
+        <label><p class="inputDescription">Nascimento:</p> 
         ${Input({
-          class: 'perfil-born',
+          class: 'perfil',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-born').value = doc.data().dateBorn })}`,
           type: 'text',
         })}</label>
@@ -57,7 +57,7 @@ function Perfil() {
         })}
         ${Button({
         id: 'deleteCount',
-        title: 'deletar conta',
+        title: 'Deletar conta',
         onClick: deleteCount,
         })}
     </form>

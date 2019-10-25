@@ -52,10 +52,6 @@
   align-self: flex-start;
   padding: 1%;
 }
-.user {
-  display: flex;
-  padding: 6%;
-}
 .fa-google{
   color: white;
 }
@@ -74,13 +70,9 @@
   display: flex;
   margin: auto;
 }
-.post-textarea{
-  border-radius: 10px;
-  height: 80px;
-  width: 85%;
-}
+
 .job-user{
-  justify-self: center;
+  display: block;
 }
 .menu {
   margin-left: -100%;
@@ -109,7 +101,7 @@
   background-color: #FF1C14;
 }
 .name-user{
-  margin-left: 10%;
+  display: block;
 }
 .name-network {
   color: #FF1C14;
@@ -117,6 +109,11 @@
   margin: auto;
   text-align: center;
   padding: 4%;
+}
+.post-textarea{
+  border-radius: 10px;
+  height: 80px;
+  width: 85%;
 }
 .primary-icon{
   border:1px solid #FFC44F;
@@ -167,6 +164,17 @@
   text-align: center;
   padding: 2%;
 }
+.user {
+  display: flex;
+  padding: 6%;
+  font-weight: 600;
+  color: #FF1C14;
+  align-self: center;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
 #btnGoogle.button{
   background-color: #DB4437;
   border-radius: 50%;
@@ -208,7 +216,7 @@ label{
   font-size: 110%;
   padding: 0;
 }
-#history{
+#list-post{
   margin:0;
   padding:0;
 }

@@ -4,7 +4,7 @@ import Menu from '../components/menu.js';
 
 function Profile() {
   const template = `
-  <div class="box">
+  <div class="template">
     <header class="header"><img class="logo" src="./Imagens/header-logo.png">
     <input type="checkbox" id="btn-menu"/>
     <label for="btn-menu">&#9776;</label>
@@ -36,7 +36,7 @@ function Profile() {
           value:`${firebase.auth().currentUser.email}`,
           type: 'text',
         })}
-        <label>Trabalho: </label/>
+        <label>Ocupação: </label/>
         ${Input({
           class: 'perfil-job',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-job').value = doc.data().job })}`,
@@ -77,7 +77,6 @@ function logOut() {
 function deleteCount() {
   firebase.auth().currentUser.delete();
 }
-
 
 function saveData() {
   const name = document.querySelector('.name-perfil').value;

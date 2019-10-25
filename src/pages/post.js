@@ -24,8 +24,10 @@ function Post() {
   </nav>
   <div class="user">
     <img class = "avatar" src="./Imagens/avatar.png">
+    <div class="user-info">
     <p class = "name-user">${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.name-user').textContent = doc.data().name })}</p>
     <p class='job-user'>${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.job-user').textContent = doc.data().job })}</p>
+    </div>
   </div>
   <form class="forms">
     ${TextArea({
@@ -38,7 +40,7 @@ function Post() {
     onClick: SharePost,
   })}
   </form>
-  <ul id="history">
+  <ul id="list-post">
   </ul>
   </div>`;
   loadPost();
@@ -65,7 +67,7 @@ function loadPost() {
 }
 
 function templatePosts(props) {
-  const timeline = document.getElementById("history");
+  const timeline = document.getElementById("list-post");
   timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
     ${Icons({ dataId: props.dataId, class: 'delete', title: 'x', onClick: deletePost, })}
     ${PostCard(props)} 
@@ -91,7 +93,7 @@ function SharePost() {
     comments: []
   }).then(function () {
     location.reload()
-    loadPost();
+    //loadPost();
   })
   document.querySelector('.js-post').value = '';
 }
@@ -104,11 +106,13 @@ function deletePost(event) {
 
 function likePost(event) {
   const idPost = event.target.dataset.id;
+  const time = firebase.firestore.FieldValue.serverTimestamp();
   firebase.firestore().collection('Posts').doc(idPost).get().then(function (doc) {
     let numLikes = doc.data().likes;
     numLikes++
     firebase.firestore().collection('Posts').doc(idPost).update({
       likes: numLikes,
+      time,
     }).then(() => {
       location.reload()
     })

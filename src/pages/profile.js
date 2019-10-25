@@ -49,15 +49,15 @@ function Profile() {
           type: 'text',
         })}
         <div class="perfilButton">
-       ${Button({
-        id: 'saveData',
-        title: 'Salvar dados',
-        onClick: saveData,
+        ${Button({
+          id: 'saveData',
+          title: 'Salvar dados',
+          onClick: saveData,
         })}
         ${Button({
-        id: 'deleteCount',
-        title: 'Deletar conta',
-        onClick: deleteCount,
+          id: 'deleteCount',
+          title: 'Deletar conta',
+          onClick: deleteCount,
         })}
         </div>
     </form>

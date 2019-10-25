@@ -10,6 +10,7 @@
   font-weight: bold;
   margin: 3%;
 }
+
 .avatar {
   height: 70px;
   margin: 0;
@@ -27,25 +28,29 @@
 .button:hover {
   color: #E85531;
 }
+
 .card {
   display: flex;
   flex-flow: column;
   height: auto;
   width: 90%;
-  padding: 2%;  
+  padding: 2%;
   border-radius: 10px;
   box-shadow: 3px 3px 10px 1px #ff1c14;
   padding: 2% 2% 15% 2%;
 }
-.card-name{
+
+.card-name {
   display: inline-block;
   font-size: 90%;
   font-weight: bolder;
 }
+
 .card-post {
   display: inline-block;
   word-wrap: break-word;
 }
+
 .card-time {
   display: inline-block;
   font-size: 70%;
@@ -61,47 +66,104 @@
   padding: 5% 0;
   align-items: center;
 }
+.forms-post{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin: 10%;
+  justify-content: center;
+  margin: 10% 5%;
+}
 .header {
   background-image: radial-gradient(#ffbb36 5%, #E85531);
   height: auto;
 }
-.logo {
+
+.header2 {
+  height: 3em;
+  display: flex;
+  background-image: radial-gradient(#ffbb36 5%, #E85531);
+  width: 100%;
+  min-height: 60px;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.img-post {
+  height: 100%;
+  display: flex;
+  margin-left: 45%;
+}
+
+.job-user{
+  margin-left: 10%;
+  font-weight: 300;
+  color: #FF1C14;
+  display: flex;
+  align-self: center;
+  width: 100%;
+}
+
+label[for="btn-menu"] {
+  padding: 5px;
+  text-align: left;
+  font-size: 100%;
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  top: 1%;
+  left: 5%;
+  border: 2px solid #FFC44F;
+}
+
+.logo{
   height: 120px;
   display: flex;
   margin: auto;
 }
 
-.job-user{
-  display: block;
-}
 .menu {
   margin-left: -100%;
-  transition: all .4s;
+  width: 100%;
+  transition: all .3s;
   position: absolute;
+
 }
+
 .menu ul {
   list-style: none;
-  position:relative;
+  position: relative;
   display: inline-block;
 }
-.menu ul li{
+
+.menu ul li {
   width: 100%;
   float: none;
   background-color: #FFC44F;
-  
 }
+
 .menu a {
   padding: 15px;
   display: flex;
   text-decoration: none;
   text-align: center;
+  font-size: 15px;
 }
-.menu ul li:hover a{
+
+.menu ul li:hover a {
   background-color: #FF1C14;
+  color: black;
 }
 .name-user{
-  display: block;
+  margin-left: 10%;
+  font-weight: 600;
+  color: #FF1C14;
+  display: flex;
+  align-self: center;
 }
+
 .name-network {
   color: #FF1C14;
   font-size: 350%;
@@ -111,7 +173,7 @@
   padding: 4%;
   text-shadow: #df7f1d 2px 2px 2px;
 }
-.perfilButton{
+.primary-box {
   display: flex;
   flex-direction: column;
   width: 35%;
@@ -120,31 +182,34 @@
   border-radius: 10px;
   height: 80px;
   width: 85%;
+  padding: 5px;
+  margin-left: 6%
 }
-.primary-icon{
-  border:1px solid #FFC44F;
+.primary-icon {
+  border: 1px solid #FFC44F;
   border-radius: 1%;
 }
-.primary-icon-delete{
+.primary-icon-delete {
   position: absolute;
   right: 5%;
   margin: 2% 4%;
   font-weight: 900;
   color: red;
 }
-.primary-icon-like{
+.primary-icon-like {
   position: absolute;
   margin-bottom: 1%;
-  left: 80%;
+  left: 70%;
   align-self: flex-end;
 }
-.primary-icon-edit{
+
+.primary-icon-edit {
   position: absolute;
   left: 10%;
   align-self: flex-end;
   margin: 1%;
 }
-.primary-icon-save{
+.primary-icon-save {
   position: absolute;
   left: 21%;
   align-self: flex-end;
@@ -170,6 +235,10 @@
   text-align: center;
   padding: 2%;
 }
+
+#btn-menu {
+  display: none;
+}
 #saveData {
   padding: 3%;
   margin: 5%;
@@ -181,10 +250,9 @@
 }
 .user {
   display: flex;
+  justify-content: flex-start;
   padding: 6%;
-  font-weight: 600;
-  color: #FF1C14;
-  align-self: center;
+  flex-direction: row;
 }
 .user-info {
   display: flex;
@@ -197,7 +265,6 @@
 }
 #btnregister.button{
   display: block;
-  margin: auto
 }
 #btnForget.button{
   background-color: transparent;
@@ -207,25 +274,23 @@
   font-size: 1rem;
   cursor: pointer;
 }
-#btn-menu {
-  display: none;
+
+#list-post {
+  margin: 0;
+  padding: 0;
 }
-#btn-menu:checked ~ .menu{
-  margin-left: 5%;
+
+#iGoogle.primary-button {
+  background-color: #DB4437;
+  border-radius: 50%;
+  height: auto;
+}
+
+#register.primary-button {
   display: block;
+  margin: auto
 }
-label[for="btn-menu"]{
-  padding: 5px;
-  text-align: left;
-  font-size: 30px;
-  cursor: pointer;
-  height: 50px;
-  display: flex;
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  border: 2px solid  #FFC44F;
-}
+
 label{
   font-family: 'Handlee', cursive;
   font-weight: bold;
@@ -236,20 +301,50 @@ label{
   margin:0;
   padding:0;
 }
+@media screen and (min-width: 992px) {
+  .avatar {
+    height: 80px;
+    margin: 0 10px 0 0;
+  }
 
-@media screen and (min-width: 992px){
-  .template {
+  .box {
     display: flex;
     justify-content: center;
+  }
+
+  .box-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: space-between;
+    margin-left: 6%;
+  }
+
+  #btn-menu {
+    height: auto;
+    width: 6%;
+  }
+  .card-name {
+    margin-left: 1%;
+  }
+  .card-post {
+    margin-left: 1%;
   }
   .perfil-section{
     flex: 1 1 100%;
     padding: 2% 0 8%;
   }
   .header {
-    flex:1 1 100%;
+    flex: 1 1 100%;
     display: flex;
   }
+  .job-user{
+    margin: 0 20% 0 5%;
+    height: auto;
+    align-items: baseline;
+    width: 75%;
+  }
+
   .logo {
     height: auto;
   }
@@ -257,27 +352,70 @@ label{
     flex:1 1 100%;
     padding: 2%;
   }
+  label[for="btn-menu"] {
+    margin-top: 1%;
+    padding-bottom: 0px;
+  }
+  .name-user{
+    display: flex;
+    align-self: baseline;
+    margin-left: 5%;
+  }
   .register-section{
     flex:1 1 100%;
     padding: 2% 0 12%;
   }
-  .update-box{
-    flex:1 1 100%;
+  .forms-post {
+    margin: 0 10% 0;
+  }
+  .post-textarea {
+    width: 50%;
+    margin: 5% 0 0 3%;
+  }
+  .primary-icon-delete {
+    right: 14%;
+    margin-top: 1%;
+  }
+  .primary-icon-edit {
+    margin-right: 35%;
+    margin-left: auto;
+  }
+
+  .primary-icon-like {
+    margin-left: 9%;
+  }
+
+  .primary-icon-save {
+    left: auto;
+    margin-right: 33%;
+  }
+
+  .register-box {
+    flex: 1 1 100%;
+    padding: 2% 0 12%;
+    width: 50%;
+    margin-left: 25%
+  }
+
+  .timeline {
+    width: 50%;
+    margin: 2%;
+    margin-left: 36%;
+  }
+
+  .update-box {
+    flex: 1 1 100%;
     padding: 14% 0 14%;
   }
-  .primary-input  {
-    width: 50%;
-    margin: 2%
-  }
-  .inputDescription {
-    font-size: 120%;  
-    font-family: 'Handlee', cursive;
-    display:inline-flex ; 
-  }
-  .perfil.primary-input{
-    display:inline-flex; 
-    position: relative;
-    width: 100%;
+
+  .user {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin: 6% auto;
+    padding: 0;
+
   }
   .name-network{
     font-size: 450%;

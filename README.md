@@ -1,16 +1,29 @@
 # Rede Social Heroínas
 
-Neste projeto foi construída uma rede social, cuja temática escolhida foi Feminismo.
+## Índice
+- [Rede Social Heroínas](#rede-social-heroínas)
+  - [Índice](#Índice)
+  - [1. Resumo do Projeto.](#1-resumo-do-projeto)
+  - [2. Características-Técnicas.](#2-características-técnicas)
+  - [3. Usuários.](#3-usu%c3%a1rios)
+  - [4. Histórias de Usuários](#4-hist%c3%b3rias-de-usu%c3%a1rios)
+  - [5. Desenho da Interface](#5-desenho-da-interface)
+  - [6. Checklist](#6-checklist)
 
-## Objetivo
+## 1. Resumo do Projeto
 
-O objetivo deste projeto é construir uma Rede Social, Single-Page Application (SPA), responsiva na qual podemos escrever, ler, atualizar e deletar dados.
+Neste projeto, criamos a Rede Social **Heroínas**, que é voltada para programadoras que desejem se conectar com outras programadoras. O tema escolhido foi "Feminismo". 
 
-Para isso, deverá colocar em prática sua criatividade para gerar ideias que levem a uma solução original e valiosa para o problema elegido, trabalhando em equipe e buscando feedbacks constantes.
+A nossa personagem principal é a Mulher Maravilha - que, agora, decidiu se desafiar e começar uma nova profissão - assim como nós, alunas da Laboratória! 
 
-Em outras palavras, seguirá se aprofundando no que já aprendeu nos projetos anteriores, mas em particular verá:
+## 2. Características Técnicas
 
-### Planejamento
+As **caraterísticas técnicas** da aplicação envolveram:
+- Uma *Single-Page Application*;
+- CSS: Desenho com enfoque no mobile first;
+- Permite a persistência, edição, atualização e exclusão de dados;
+
+###  1. Planejamento
 
 * Escrever, de maneira colaborativa, as **Definições de pronto** e **Critérios de Aceitação** para cada **História de usuário** que te daremos para este projeto e que deverá considerar em seu planejamento.
 

@@ -4,14 +4,28 @@
   padding: 0;
   justify-content: inherit;
 }
-.alertMessage{
+.alert-message{
   text-align: center;
   color: #FF1C14;
   font-weight: bold;
+  margin: 3%;
 }
 .avatar {
   height: 70px;
   margin: 0;
+}
+.button {
+  background-color: #FFC44F;
+  padding: 2%;
+  margin: 1%;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+.button:hover {
+  color: #E85531;
 }
 .card {
   display: flex;
@@ -38,38 +52,33 @@
   align-self: flex-start;
   padding: 1%;
 }
-.data-perfil{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.description {
-  display: flex;
-  justify-content: flex-start;
-  padding: 6%;
-}
 .fa-google{
   color: white;
+}
+.forms{
+  display: flex;
+  flex-direction: column;
+  padding: 5% 0;
+  align-items: center;
 }
 .header {
   background-image: radial-gradient(#ffbb36 5%, #E85531);
   height: auto;
 }
-img {
+.logo {
   height: 120px;
   display: flex;
   margin: auto;
 }
-.js-post {
-  height: 80px;
-  width: 85%;
+
+.job-user{
+  display: block;
 }
 .menu {
   margin-left: -100%;
   width: 100%;
   transition: all .4s;
   position: absolute;
-  
 }
 .menu ul {
   list-style: none;
@@ -91,8 +100,8 @@ img {
 .menu ul li:hover a{
   background-color: #FF1C14;
 }
-.name-display{
-  margin-left: 10%;
+.name-user{
+  display: block;
 }
 .name-network {
   color: #FF1C14;
@@ -101,11 +110,10 @@ img {
   text-align: center;
   padding: 4%;
 }
-.primary-box{
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
+.post-textarea{
+  border-radius: 10px;
+  height: 80px;
+  width: 85%;
 }
 .primary-icon{
   border:1px solid #FFC44F;
@@ -136,47 +144,47 @@ img {
   align-self: flex-end;
   margin: 1%;
 }
-.primary-button {
-  background-color: #FFC44F;
-  padding: 2%;
-  margin: 1%;
-  font-size: 1rem;
-  border-radius: 5px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-.primary-button:hover {
-  color: #E85531;
-}
 .post-box{
   margin: 10%;
   display: flex;
   justify-content: center;
   margin: 10% 5%;
 }
-.primary-input  {
+.input  {
+  width: auto;
   border-radius: 15px;
   padding: 5px;
-  margin: 3%;
+  margin: 0 3% 5%;
+}
+.register-section {
+  display: flex;
+  flex-direction: column;
 }
 .text-simple {
   text-align: center;
-  padding: 3% 0 1%;
+  padding: 2%;
 }
-#iGoogle.primary-button{
+.user {
+  display: flex;
+  padding: 6%;
+  font-weight: 600;
+  color: #FF1C14;
+  align-self: center;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+#btnGoogle.button{
   background-color: #DB4437;
   border-radius: 50%;
   height: auto;
 }
-#register.primary-button{
+#btnregister.button{
   display: block;
   margin: auto
 }
-#create-account.primary-button{
-  margin: 5%;
-}
-#forget.primary-button{
+#btnForget.button{
   background-color: transparent;
   font-weight: normal;
   padding: 2%;
@@ -203,12 +211,17 @@ label[for="btn-menu"]{
   left: 5%;
   border: 2px solid  #FFC44F;
 }
-#history{
+label{
+  font-family: 'Handlee', cursive;
+  font-size: 110%;
+  padding: 0;
+}
+#list-post{
   margin:0;
   padding:0;
 }
 @media screen and (min-width: 992px){
-  .box {
+  .template {
     display: flex;
     justify-content: center;
   }
@@ -219,11 +232,11 @@ label[for="btn-menu"]{
   img {
     height: auto;
   }
-  .login-box{
+  .login-section{
     flex:1 1 100%;
     padding: 2%;
   }
-  .register-box{
+  .register-section{
     flex:1 1 100%;
     padding: 2% 0 12%;
   }

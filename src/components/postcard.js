@@ -1,9 +1,9 @@
 function PostCard(props) {
     const template = `
     <li data-id=${props.dataId} class="card">
-      <ul class = "card-time">${props.time}</ul>
-      <ul class = "card-name">${props.name}</ul>
-      <ul class = "card-post">${props.post}</ul>
+      <p class = "card-time">${props.time}</p>
+      <p class = "card-name">${props.name}</p>
+      <p class = "card-post">${props.post}</p>
     </li>
     `;
     return template;

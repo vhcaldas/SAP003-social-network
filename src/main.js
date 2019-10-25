@@ -1,33 +1,35 @@
 import Login from './pages/login.js';
 import Register from './pages/register.js';
 import Post from './pages/post.js';
-import Update from './pages/update.js'
-import Perfil from './pages/perfil.js'
+import ForgotPassword from './pages/forgot_password.js'
+import Profile from './pages/profile.js'
 
-window.addEventListener('load', acesspages);
+window.addEventListener('load', routesPage);
 
-function acesspages () {
+function routesPage() {
+  const main = document.querySelector('main')
   firebase.auth().onAuthStateChanged(function (user) {
-  switch (location.hash) {
-    case "#register":
-      user ? window.location = "#post" : document.querySelector('main').innerHTML = Register();
-    break;
-    case "#login":
-      user ? window.location = "#post" : document.querySelector('main').innerHTML = Login();
-    break;
-    case "#update":
-      user ? window.location = "#post" : document.querySelector('main').innerHTML = Update();
-    break;
-    case "#perfil" :
-      user ? document.querySelector('main').innerHTML = Perfil() : window.location = "#login";
-    break;
-    case "#post" :
-      user ? document.querySelector('main').innerHTML = Post() : window.location = "#login";
-    break;
-    default:
-      window.location = "#login";
-  }})
+    switch (location.hash) {
+      case "#register":
+        user ? window.location = "#post" : main.innerHTML = Register();
+        break;
+      case "#login":
+        user ? window.location.hash = "#post": main.innerHTML = Login();
+        break;
+      case "#forgot_password":
+        user ? window.location = "#post" : main.innerHTML = ForgotPassword();
+        break;
+      case "#profile":
+        user ? main.innerHTML = Profile() : window.location = "#login";
+        break;
+      case "#post":
+        user ? main.innerHTML = Post() : window.location = "#login";
+        break;
+      default:
+        window.location = "#login";
+    }
+  })
 }
 
-window.addEventListener('hashchange', acesspages, false);
-window.addEventListener('load', acesspages);
+window.addEventListener('hashchange', routesPage, false);
+window.addEventListener('load', routesPage);

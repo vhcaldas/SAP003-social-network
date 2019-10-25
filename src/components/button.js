@@ -1,10 +1,11 @@
 function Button(props) {
   const template = `
     <button
-      class="primary-button"
+      class="button"
+      type="submit"
       id=${props.id}
       onclick="button.handleClick(event, ${props.onClick})" >
-        ${props.title}
+      ${props.title}
     </button>
   `;
   return template;

@@ -76,7 +76,6 @@
 }
 .menu {
   margin-left: -100%;
-  width: 100%;
   transition: all .4s;
   position: absolute;
 }
@@ -105,10 +104,17 @@
 }
 .name-network {
   color: #FF1C14;
-  font-size: 200%;
+  font-size: 350%;
+  font-family: 'Amaranth', sans-serif;
   margin: auto;
   text-align: center;
   padding: 4%;
+  text-shadow: #df7f1d 2px 2px 2px;
+}
+.perfilButton{
+  display: flex;
+  flex-direction: column;
+  width: 35%;
 }
 .post-textarea{
   border-radius: 10px;
@@ -164,6 +170,15 @@
   text-align: center;
   padding: 2%;
 }
+#saveData {
+  padding: 3%;
+  margin: 5%;
+  background-color: #FFC44F;
+}
+#deleteCount {
+  padding: 3%;
+  background-color: #e86b76;
+}
 .user {
   display: flex;
   padding: 6%;
@@ -213,23 +228,29 @@ label[for="btn-menu"]{
 }
 label{
   font-family: 'Handlee', cursive;
-  font-size: 110%;
-  padding: 0;
+  font-weight: bold;
+  font-size: large;
+  padding: 2%;
 }
 #list-post{
   margin:0;
   padding:0;
 }
+
 @media screen and (min-width: 992px){
   .template {
     display: flex;
     justify-content: center;
   }
+  .perfil-section{
+    flex: 1 1 100%;
+    padding: 2% 0 8%;
+  }
   .header {
     flex:1 1 100%;
     display: flex;
   }
-  img {
+  .logo {
     height: auto;
   }
   .login-section{
@@ -247,5 +268,38 @@ label{
   .primary-input  {
     width: 50%;
     margin: 2%
+  }
+  .inputDescription {
+    font-size: 120%;  
+    font-family: 'Handlee', cursive;
+    display:inline-flex ; 
+  }
+  .perfil.primary-input{
+    display:inline-flex; 
+    position: relative;
+    width: 100%;
+  }
+  .name-network{
+    font-size: 450%;
+  }
+  #saveData{
+    display: inline-block;
+    width: 100%;
+    padding: 5%;
+  }
+  #deleteCount{
+    display: inline-block;
+    width: 100%;
+    padding: 5%
+  }
+  .perfilButton{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+  }
+  #btn-menu:checked ~ .menu{
+    margin-left: 0%;
+    display: block;
   }
 }

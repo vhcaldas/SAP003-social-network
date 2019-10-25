@@ -23,7 +23,7 @@ function Register() {
         value:'',
         type: 'date',
         })}
-        <label> Trabalho:</label> 
+        <label> Ocupação:</label> 
         ${Input({
         class: 'job-input',
         placeholder: 'Desenvolvedora front-end na Heroínas',

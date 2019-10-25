@@ -26,38 +26,40 @@ function Profile() {
       <form class="forms">
         <label>Nome: </label/>
         ${Input({
-          class: 'name-perfil',
+          class: 'perfil',
           value:`${firebase.auth().currentUser.displayName}`,
           type: 'text',
         })}
         <label>Email: </label/>
         ${Input({
-          class: 'email-perfil',
+          class: 'perfil',
           value:`${firebase.auth().currentUser.email}`,
           type: 'text',
         })}
         <label>Ocupação: </label/>
         ${Input({
-          class: 'perfil-job',
+          class: 'perfil',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-job').value = doc.data().job })}`,
           type: 'text',
         })}
         <label>Data de nascimento: </label/> 
         ${Input({
-          class: 'perfil-born',
+          class: 'perfil',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-born').value = doc.data().dateBorn })}`,
           type: 'text',
         })}
-        ${Button({
+        <div class="perfilButton">
+       ${Button({
         id: 'saveData',
         title: 'Salvar dados',
         onClick: saveData,
         })}
         ${Button({
         id: 'deleteCount',
-        title: 'deletar conta',
+        title: 'Deletar conta',
         onClick: deleteCount,
         })}
+        </div>
     </form>
   </section>
 </div>

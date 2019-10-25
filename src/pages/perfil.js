@@ -50,6 +50,7 @@ function Perfil() {
           type: 'text',
         })}</label>
         </div>
+        <div class="perfilButton">
         ${Button({
         id: 'saveData',
         title: 'Salvar dados',
@@ -60,6 +61,7 @@ function Perfil() {
         title: 'Deletar conta',
         onClick: deleteCount,
         })}
+        </div>
     </form>
   </section>
 </div>

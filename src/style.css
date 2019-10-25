@@ -75,7 +75,6 @@ img {
 }
 .menu {
   margin-left: -100%;
-  width: 100%;
   transition: all .4s;
   position: absolute;
   
@@ -111,6 +110,11 @@ img {
   text-align: center;
   padding: 4%;
   text-shadow: #df7f1d 2px 2px 2px;
+}
+.perfilButton{
+  display: flex;
+  flex-direction: column;
+  width: 35%;
 }
 .primary-box{
   display: flex;
@@ -227,6 +231,14 @@ label[for="btn-menu"]{
   margin:0;
   padding:0;
 }
+#saveData{
+  padding: 5%;
+  margin: 5%
+}
+#deleteCount{
+  padding: 5%;
+  margin: 5%
+}
 @media screen and (min-width: 992px){
   .box {
     display: flex;
@@ -252,7 +264,7 @@ label[for="btn-menu"]{
     padding: 14% 0 14%;
   }
   .primary-input  {
-    width: 150%;
+    width: 50%;
     margin: 2%
   }
   .inputDescription {
@@ -269,16 +281,22 @@ label[for="btn-menu"]{
     font-size: 450%;
   }
   #saveData{
-    display: inline;
-    position: relative;
-    margin-right: 50%;
+    display: inline-block;
+    width: 100%;
+    padding: 5%;
   }
   #deleteCount{
+    display: inline-block;
+    width: 100%;
+    padding: 5%
+  }
+  .perfilButton{
+    display: flex;
+    align-items: center;
+    width: 35%;
+  }
+  #btn-menu:checked ~ .menu{
+    margin-left: 0%;
     display: block;
-    position: absolute;
-    margin-left: 10%;
-    margin-bottom: 2%;
-    margin-top: 19%;
-    padding: 1.5%;
   }
 }

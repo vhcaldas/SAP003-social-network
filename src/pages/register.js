@@ -3,45 +3,50 @@ import Input from '../components/input.js';
 
 function Register() {
   const template = `
-  <div class="box">
-    <header class="header"><img src="./Imagens/header-logo.png"></header>
-    <section class = "register-box">
+  <div class="template">
+    <header class="header"><img class="logo" src="./Imagens/header-logo.png"></header>
+    <section class = "register-section">
       <h1 class="name-network">Heroínas</h1>
       <h3 class="text-simple">Para fazer seu cadastro na rede Heroínas preencha os campos abaixo!</h3>
-      <form class="primary-box">
+      <form class="forms">
+        <label>Nome Completo :</label>      
         ${Input({
-        class: 'js-name-input',
-        placeholder: 'Nome Completo',
+        class: 'name-input',
+        placeholder: 'Mulher Maravilha',
         value:'',
         type: 'text',
         })}
+        <label>Data de nascimento :</label> 
         ${Input({
-        class: 'js-date-input',
-        placeholder: 'data de nascimento',
+        class: 'birth-date-input',
+        placeholder: '',
         value:'',
         type: 'date',
         })}
+        <label> Ocupação:</label> 
         ${Input({
-        class: 'js-job-input',
-        placeholder: 'job',
+        class: 'job-input',
+        placeholder: 'Desenvolvedora front-end na Heroínas',
         value:'',
         type: 'text',
         })}
+        <label> Email:</label> 
         ${Input({
-        class: 'js-email-input',
-        placeholder: 'Email',
+        class: 'email-input',
+        placeholder:'exemplo@seudomínio.com',
         value:'',
         type: 'text',
       })}
+      <label> Senha:</label> 
           ${Input({
-        class: 'js-password-input ',
-        placeholder: 'Senha',
+        class: 'password-input ',
+        placeholder: '********',
         value:'',
         type: 'password',
       })}
-      <p class="alertMessage"></p>
+      <p class="alert-message"></p>
           ${Button({
-        id: 'create-account',
+        id: 'btncreate-count',
         title: 'Criar Conta',
         onClick: createCount,
       })}
@@ -54,11 +59,11 @@ function Register() {
 }
 
 function createCount() {
-  const email = document.querySelector('.js-email-input').value;
-  const password = document.querySelector('.js-password-input').value;
-  const name = document.querySelector('.js-name-input').value;
-  const born = document.querySelector('.js-date-input').value;
-  const job = document.querySelector('.js-job-input').value;
+  const email = document.querySelector('.email-input').value;
+  const password = document.querySelector('.password-input').value;
+  const name = document.querySelector('.name-input').value;
+  const born = document.querySelector('.birth-date-input').value;
+  const job = document.querySelector('.job-input').value;
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(() => {
       firebase.auth().currentUser.updateProfile({
@@ -68,6 +73,7 @@ function createCount() {
       const email = firebase.auth().currentUser.email;
       const codUid = firebase.auth().getUid(email);
       firebase.firestore().collection('users').doc(codUid).set({
+        name,
         dateBorn: born,
         job,
       })

@@ -25,7 +25,7 @@ function templatePosts(props) {
   timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
     ${Icons({id:props.dataId, class:'delete', title:'x',onClick: deletePost,})}
     ${PostCard(props)} 
-    ${Icons({id:props.dataId, class:'like', title:`likes ${props.like}`,onClick: likePost,})}
+    ${Icons({id:props.dataId, class:'like', title:`'👍' ${props.like}`,onClick: likePost,})}
     ${Icons({id:props.dataId, class:'edit',title:'edit',onClick: editPost,})}
     ${Icons({id:props.dataId, class:'save',title:'save',onClick: savePost,})}
     </div>`
@@ -35,8 +35,7 @@ function templatePosts(props) {
 function Post() {
   location.hash = 'post'
   const template = `
-  <div class="box-post">
-  <header class="header"><img src="./Imagens/header-logo.png"></header>
+  <header class="header2"><img src="./Imagens/header-logo.png" class="img-post"></header>
   <input type="checkbox" id="btn-menu"/>
   <label for="btn-menu">&#9776;</label>
   <nav class="menu">
@@ -51,24 +50,26 @@ function Post() {
   })}
   </ul> 
   </nav>
-  <div class="description">
-    <img class = "avatar" src="./Imagens/avatar.png">
-    <p class = "name-display">${firebase.auth().currentUser.displayName}</p>
-  </div>
-  <form class="primary-box">
-    ${Input({
-    class: 'js-post',
-    placeholder: 'O que quer compartilhar?',
-    type: 'text',
-  })}
-    ${Button({
-    id: 'share',
-    title: 'Compartilhar',
-    onClick: SharePost,
-  })}
-  </form>
-  <ul id="history">
-  </ul>
+  <div class="box-post">
+    <div class="description">
+      <img class = "avatar" src="./Imagens/avatar.png">
+      <p class = "name-display">${firebase.auth().currentUser.displayName}</p>
+    </div>
+    <form class="primary-box">
+      ${Input({
+      class: 'js-post',
+      placeholder: 'O que quer compartilhar?',
+      type: 'text',
+      })}
+      ${Button({
+      id: 'share',
+      title: 'Compartilhar',
+      onClick: SharePost,
+      })}
+    </form>
+    <div class="timeline">
+      <ul id="history"></ul>
+    </div>
   </div>`;
   loadPost();
   return template;
@@ -106,7 +107,7 @@ function likePost(event) {
   let y = Number(document.getElementById(idPost).getElementsByClassName('primary-icon-like')[0].textContent.replace(/\D/g,''));
   y++;
   firebase.firestore().collection('Posts').doc(idPost).update({
-     likes: y,
+    likes: y,
   }).then(()=>{
     location.reload()
   }) 

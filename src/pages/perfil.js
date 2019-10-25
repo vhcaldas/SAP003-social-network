@@ -24,8 +24,8 @@ function Perfil() {
     <section class = "primary-box">
       <h1 class="name-network">Heroínas</h1>
       <form class="primary-box">
-        ${firebase.auth().currentUser.displayName}
-        ${firebase.auth().currentUser.email}
+        <p>${firebase.auth().currentUser.displayName}</p>
+        <p>${firebase.auth().currentUser.email}</p>
         ${Button({
           id: 'deleteCount',
           title: 'deletar conta',
@@ -39,32 +39,6 @@ function Perfil() {
   return template;
 }
 
-/* function createCount() {
-  const email = document.querySelector('.js-email-input').value;
-  const password = document.querySelector('.js-password-input').value;
-  const name = document.querySelector('.js-name-input').value;
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      firebase.auth().currentUser.updateProfile({
-        displayName: name
-      });
-      firebase.auth().currentUser.sendEmailVerification()
-      window.location.hash = 'login';
-    })
-    .catch(function (error) {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      if (errorCode == 'auth/email-already-in-use') {
-        document.querySelector('.alertMessage').textContent ='E-mail já cadastrado.';
-      } if (errorCode == 'auth/weak-password') {
-        document.querySelector('.alertMessage').textContent = 'A senha é muito fraca.';
-      } if (errorCode == 'auth/invalid-email') {
-        document.querySelector('.alertMessage').textContent ='E-mail inválido.';
-      } else {
-        document.querySelector('.alertMessage').textContent = errorMessage;
-      }
-    });
-} */
 function pageFeed() {
     window.location.hash = 'post';
   }

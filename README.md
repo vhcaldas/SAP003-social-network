@@ -1,21 +1,6 @@
-# Criando uma Rede Social
+# Rede Social Heroínas
 
-Neste projeto você construirá uma rede social, cuja temática deixaremos ao seu critério.
-
-Aqui estão algumas ideias:
-
-- Alimentação
-- Feminismo
-- Educação
-- Saúde
-- Energias Renováveis
-
-As **caraterísticas técnicas** de sua aplicação serão:
-- Deve ser uma Single-Page Application [SPA](https://dzone.com/articles/how-single-page-web-applications-actually-work)
-- Deve ser desenhada com enfoque [mobile first](https://darwindigital.com/mobile-first-versus-responsive-web-design/)
-- Deve permitir a persistência de dados
-
-Em sua aplicação você usará *HTML5*, *CCS3* ou *SASS*, *JavaScript(ES6+)*, *Firebase* ou *LocalStorage*
+Neste projeto foi construída uma rede social, cuja temática escolhida foi Feminismo.
 
 ## Objetivo
 
@@ -205,3 +190,15 @@ Recorde que não poderá usar frameworks CSS, somente *css* ou [*sass*](https://
 * [Flexbox - LMS](https://github.com/rafaelbcerri/curricula-js/tree/fix-content/topics/css/01-css/08-flexbox)
 
 ***
+
+#### Ferramentas utilizadas
+1. HTML 5
+2. CSS
+3. Vanilla JS
+4. Git e GitHub
+5. Visual Code Studio
+6. Firebase auth, firestore e hosting
+
+
+
+

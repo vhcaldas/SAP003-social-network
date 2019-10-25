@@ -2,10 +2,10 @@ import Button from '../components/button.js';
 import Input from '../components/input.js';
 import Menu from '../components/menu.js';
 
-function Perfil() {
+function Profile() {
   const template = `
   <div class="box">
-    <header class="header"><img src="./Imagens/header-logo.png">
+    <header class="header"><img class="logo" src="./Imagens/header-logo.png">
     <input type="checkbox" id="btn-menu"/>
     <label for="btn-menu">&#9776;</label>
     <nav class="menu">
@@ -21,35 +21,33 @@ function Perfil() {
     </ul> 
     </nav>
     </header>
-    <section class = "primary-box">
+    <section class = "perfil-section">
       <h1 class="name-network">Heroínas</h1>
-      <form class="primary-box">
-        <div class="data-perfil">
-        <label>Nome: 
+      <form class="forms">
+        <label>Nome: </label/>
         ${Input({
           class: 'name-perfil',
           value:`${firebase.auth().currentUser.displayName}`,
           type: 'text',
-        })}</label/>
-        <label>Email: 
+        })}
+        <label>Email: </label/>
         ${Input({
           class: 'email-perfil',
           value:`${firebase.auth().currentUser.email}`,
           type: 'text',
-        })}</label>
-        <label>Trabalho: 
+        })}
+        <label>Trabalho: </label/>
         ${Input({
           class: 'perfil-job',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-job').value = doc.data().job })}`,
           type: 'text',
-        })}</label>
-        <label>Data de nascimento: 
+        })}
+        <label>Data de nascimento: </label/> 
         ${Input({
           class: 'perfil-born',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-born').value = doc.data().dateBorn })}`,
           type: 'text',
-        })}</label>
-        </div>
+        })}
         ${Button({
         id: 'saveData',
         title: 'Salvar dados',
@@ -64,7 +62,7 @@ function Perfil() {
   </section>
 </div>
   `;
-  location.hash = 'perfil'
+  location.hash = 'profile'
   return template;
 }
 
@@ -86,10 +84,8 @@ function saveData() {
   const email = document.querySelector('.email-perfil').value;
   const job = document.querySelector('.perfil-job').value;
   const dateBorn = document.querySelector('.perfil-born').value;
-  console.log(name,email,job,dateBorn)
   firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).update(
-    {job,
-    dateBorn}
+    {job, dateBorn}
   );
   firebase.auth().currentUser.updateProfile({
     displayName: name,
@@ -97,4 +93,4 @@ function saveData() {
   });
 }
 
-export default Perfil;
+export default Profile;

@@ -25,9 +25,9 @@ function templatePosts(props) {
   timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
     ${Icons({id:props.dataId, class:'delete', title:'x',onClick: deletePost,})}
     ${PostCard(props)} 
-    ${Icons({id:props.dataId, class:'like', title:`'👍' ${props.like}`,onClick: likePost,})}
-    ${Icons({id:props.dataId, class:'edit',title:'edit',onClick: editPost,})}
-    ${Icons({id:props.dataId, class:'save',title:'save',onClick: savePost,})}
+    ${Icons({id:props.dataId, class:'like', title:`👍 ${props.like}`,onClick: likePost,})}
+    ${Icons({id:props.dataId, class:'edit',title: `📝`, onClick: editPost,})}
+    ${Icons({id:props.dataId, class:'save',title: `💾`, onClick: savePost,})}
     </div>`
     document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none';
 }
@@ -51,7 +51,7 @@ function Post() {
   </ul> 
   </nav>
   <div class="box-post">
-    <div class="description">
+    <div class="user">
       <img class = "avatar" src="./Imagens/avatar.png">
       <p class = "name-display">${firebase.auth().currentUser.displayName}</p>
     </div>
@@ -103,11 +103,12 @@ function deletePost(event) {
 
 function likePost(event) {
   const idPost = event.target.id;
-  console.log(idPost)
+  const time = firebase.firestore.FieldValue.serverTimestamp();
   let y = Number(document.getElementById(idPost).getElementsByClassName('primary-icon-like')[0].textContent.replace(/\D/g,''));
   y++;
   firebase.firestore().collection('Posts').doc(idPost).update({
     likes: y,
+    data: time,
   }).then(()=>{
     location.reload()
   }) 

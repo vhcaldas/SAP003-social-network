@@ -45,13 +45,6 @@
   padding: 1%;
 }
 
-.description {
-  display: flex;
-  justify-content: flex-start;
-  padding: 6%;
-  flex-direction: row;
-}
-
 .fa-google {
   color: white;
 }
@@ -224,6 +217,13 @@ label[for="btn-menu"] {
   padding: 3% 0 1%;
 }
 
+.user {
+  display: flex;
+  justify-content: flex-start;
+  padding: 6%;
+  flex-direction: row;
+}
+
 #btn-menu {
   display: none;
 }
@@ -276,15 +276,21 @@ label[for="btn-menu"] {
   .box-post {
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: start;
     align-content: space-between;
   }
 
-  .description {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    height: 100%;
+  #btn-menu {
+    height: auto;
+    width: 6%;
+  }
+
+  .card-name {
+    margin-left: 1%;
+  }
+
+  .card-post {
+    margin-left: 1%;
   }
 
   .header {
@@ -294,6 +300,10 @@ label[for="btn-menu"] {
 
   img {
     height: auto;
+  }
+
+  label[for="btn-menu"] {
+    margin-top: 1%;
   }
 
   .login-box {
@@ -306,21 +316,33 @@ label[for="btn-menu"] {
     align-self: auto;
   }
 
-
   .primary-box {
     display: flex;
     padding: 2%;
   }
 
-  .timeline {
-    width: 50%;
-    margin: 2%;
-    display: contents;
-  }
-
   .primary-input {
     width: 50%;
     margin: 2%
+  }
+
+  .primary-icon-delete {
+    right: 26%;
+    margin-top: 1%;
+  }
+
+  .primary-icon-edit {
+    margin-right: 38%;
+    left: auto;
+  }
+
+  .primary-icon-like {
+    left: 65%;
+  }
+
+  .primary-icon-save {
+    left: auto;
+    margin-right: 33%;
   }
 
   .register-box {
@@ -330,8 +352,21 @@ label[for="btn-menu"] {
     margin-left: 25%
   }
 
+  .timeline {
+    width: 50%;
+    margin: 2%;
+    margin-left: 25%;
+  }
+
   .update-box {
     flex: 1 1 100%;
     padding: 14% 0 14%;
+  }
+
+  .user {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
   }
 }

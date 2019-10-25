@@ -4,16 +4,29 @@
   padding: 0;
   justify-content: inherit;
 }
-
-.alertMessage {
+.alert-message{
   text-align: center;
   color: #FF1C14;
   font-weight: bold;
+  margin: 3%;
 }
 
 .avatar {
   height: 70px;
   margin: 0;
+}
+.button {
+  background-color: #FFC44F;
+  padding: 2%;
+  margin: 1%;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+.button:hover {
+  color: #E85531;
 }
 
 .card {
@@ -44,11 +57,24 @@
   align-self: flex-start;
   padding: 1%;
 }
-
-.fa-google {
+.fa-google{
   color: white;
 }
-
+.forms{
+  display: flex;
+  flex-direction: column;
+  padding: 5% 0;
+  align-items: center;
+}
+.forms-post{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin: 10%;
+  justify-content: center;
+  margin: 10% 5%;
+}
 .header {
   background-image: radial-gradient(#ffbb36 5%, #E85531);
   height: auto;
@@ -65,20 +91,19 @@
   left: 0;
 }
 
-img {
-  height: 120px;
-  display: flex;
-  margin: auto;
-}
-
 .img-post {
   height: 100%;
   display: flex;
+  margin-left: 45%;
 }
 
-.js-post {
-  height: 80px;
-  width: 85%;
+.job-user{
+  margin-left: 10%;
+  font-weight: 300;
+  color: #FF1C14;
+  display: flex;
+  align-self: center;
+  width: 100%;
 }
 
 label[for="btn-menu"] {
@@ -91,6 +116,12 @@ label[for="btn-menu"] {
   top: 1%;
   left: 5%;
   border: 2px solid #FFC44F;
+}
+
+.logo{
+  height: 120px;
+  display: flex;
+  margin: auto;
 }
 
 .menu {
@@ -111,7 +142,6 @@ label[for="btn-menu"] {
   width: 100%;
   float: none;
   background-color: #FFC44F;
-
 }
 
 .menu a {
@@ -126,8 +156,7 @@ label[for="btn-menu"] {
   background-color: #FF1C14;
   color: black;
 }
-
-.name-display {
+.name-user{
   margin-left: 10%;
   font-weight: 600;
   color: #FF1C14;
@@ -137,31 +166,29 @@ label[for="btn-menu"] {
 
 .name-network {
   color: #FF1C14;
-  font-size: 200%;
+  font-size: 350%;
+  font-family: 'Amaranth', sans-serif;
   margin: auto;
   text-align: center;
   padding: 4%;
+  text-shadow: #df7f1d 2px 2px 2px;
 }
-
-.post-box {
-  margin: 10%;
-  display: flex;
-  justify-content: center;
-  margin: 10% 5%;
-}
-
 .primary-box {
   display: flex;
-  width: 100%;
   flex-direction: column;
-  align-items: center;
+  width: 35%;
 }
-
+.post-textarea{
+  border-radius: 10px;
+  height: 80px;
+  width: 85%;
+  padding: 5px;
+  margin-left: 6%
+}
 .primary-icon {
   border: 1px solid #FFC44F;
   border-radius: 1%;
 }
-
 .primary-icon-delete {
   position: absolute;
   right: 5%;
@@ -169,7 +196,6 @@ label[for="btn-menu"] {
   font-weight: 900;
   color: red;
 }
-
 .primary-icon-like {
   position: absolute;
   margin-bottom: 1%;
@@ -183,61 +209,64 @@ label[for="btn-menu"] {
   align-self: flex-end;
   margin: 1%;
 }
-
 .primary-icon-save {
   position: absolute;
   left: 21%;
   align-self: flex-end;
   margin: 1%;
 }
-
-.primary-button {
-  background-color: #FFC44F;
-  padding: 2%;
-  margin: 1%;
-  font-size: 1rem;
-  border-radius: 5px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
+.post-box{
+  margin: 10%;
+  display: flex;
+  justify-content: center;
+  margin: 10% 5%;
 }
-
-.primary-button:hover {
-  color: #E85531;
-}
-
-.primary-input {
+.input  {
+  width: auto;
   border-radius: 15px;
   padding: 5px;
-  margin: 3%;
+  margin: 0 3% 5%;
 }
-
+.register-section {
+  display: flex;
+  flex-direction: column;
+}
 .text-simple {
   text-align: center;
-  padding: 3% 0 1%;
+  padding: 2%;
 }
 
+#btn-menu {
+  display: none;
+}
+#saveData {
+  padding: 3%;
+  margin: 5%;
+  background-color: #FFC44F;
+}
+#deleteCount {
+  padding: 3%;
+  background-color: #e86b76;
+}
 .user {
   display: flex;
   justify-content: flex-start;
   padding: 6%;
   flex-direction: row;
 }
-
-#btn-menu {
-  display: none;
+.user-info {
+  display: flex;
+  flex-direction: column;
 }
-
-#btn-menu:checked~.menu {
-  margin-left: 5%;
+#btnGoogle.button{
+  background-color: #DB4437;
+  border-radius: 50%;
+  height: auto;
+}
+#btnregister.button{
   display: block;
 }
-
-#create-account.primary-button {
-  margin: 5%;
-}
-
-#forget.primary-button {
+#btnForget.button{
   background-color: transparent;
   font-weight: normal;
   padding: 2%;
@@ -246,7 +275,7 @@ label[for="btn-menu"] {
   cursor: pointer;
 }
 
-#history {
+#list-post {
   margin: 0;
   padding: 0;
 }
@@ -262,6 +291,16 @@ label[for="btn-menu"] {
   margin: auto
 }
 
+label{
+  font-family: 'Handlee', cursive;
+  font-weight: bold;
+  font-size: large;
+  padding: 2%;
+}
+#list-post{
+  margin:0;
+  padding:0;
+}
 @media screen and (min-width: 992px) {
   .avatar {
     height: 80px;
@@ -278,66 +317,72 @@ label[for="btn-menu"] {
     flex-direction: column;
     justify-content: start;
     align-content: space-between;
+    margin-left: 6%;
   }
 
   #btn-menu {
     height: auto;
     width: 6%;
   }
-
   .card-name {
     margin-left: 1%;
   }
-
   .card-post {
     margin-left: 1%;
   }
-
+  .perfil-section{
+    flex: 1 1 100%;
+    padding: 2% 0 8%;
+  }
   .header {
     flex: 1 1 100%;
     display: flex;
   }
+  .job-user{
+    margin: 0 20% 0 5%;
+    height: auto;
+    align-items: baseline;
+    width: 75%;
+  }
 
-  img {
+  .logo {
     height: auto;
   }
-
+  .login-section{
+    flex:1 1 100%;
+    padding: 2%;
+  }
   label[for="btn-menu"] {
     margin-top: 1%;
+    padding-bottom: 0px;
   }
-
-  .login-box {
-    flex: 1 1 100%;
-    padding: 2%;
-  }
-
-  .name-display {
+  .name-user{
     display: flex;
-    align-self: auto;
+    align-self: baseline;
+    margin-left: 5%;
   }
-
-  .primary-box {
-    display: flex;
-    padding: 2%;
+  .register-section{
+    flex:1 1 100%;
+    padding: 2% 0 12%;
   }
-
-  .primary-input {
+  .forms-post {
+    margin: 0 10% 0;
+  }
+  .post-textarea {
     width: 50%;
-    margin: 2%
+    margin: 5% 0 0 3%;
   }
-
   .primary-icon-delete {
-    right: 26%;
+    right: 14%;
     margin-top: 1%;
   }
-
   .primary-icon-edit {
-    margin-right: 38%;
-    left: auto;
+    margin-right: 35%;
+    margin-left: auto;
   }
 
   .primary-icon-like {
-    left: 65%;
+    margin-left: 9%;
   }
 
   .primary-icon-save {
@@ -355,7 +400,7 @@ label[for="btn-menu"] {
   .timeline {
     width: 50%;
     margin: 2%;
-    margin-left: 25%;
+    margin-left: 36%;
   }
 
   .update-box {
@@ -368,5 +413,31 @@ label[for="btn-menu"] {
     display: flex;
     flex-direction: row;
     height: 100%;
+    margin: 6% auto;
+    padding: 0;
+
+  }
+  .name-network{
+    font-size: 450%;
+  }
+  #saveData{
+    display: inline-block;
+    width: 100%;
+    padding: 5%;
+  }
+  #deleteCount{
+    display: inline-block;
+    width: 100%;
+    padding: 5%
+  }
+  .perfilButton{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+  }
+  #btn-menu:checked ~ .menu{
+    margin-left: 0%;
+    display: block;
   }
 }

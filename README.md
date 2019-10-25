@@ -203,3 +203,15 @@ Recorde que não poderá usar frameworks CSS, somente *css* ou [*sass*](https://
 * [Flexbox - LMS](https://github.com/rafaelbcerri/curricula-js/tree/fix-content/topics/css/01-css/08-flexbox)
 
 ***
+
+#### Ferramentas utilizadas
+1. HTML 5
+2. CSS
+3. Vanilla JS
+4. Git e GitHub
+5. Visual Code Studio
+6. Firebase auth, firestore e hosting
+
+
+
+

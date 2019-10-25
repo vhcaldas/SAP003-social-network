@@ -3,43 +3,47 @@ import Input from '../components/input.js';
 
 function Login() {
   const template = `
-  <div class="box">
-    <header class="header"><img src="./Imagens/header-logo.png"></header>
-    <section class = "login-box">
+  <div class="template">
+    <header class="header"><img class="logo" src="./Imagens/header-logo.png"></header>
+    <section class ="login-section">
       <h1 class="name-network">Heroínas</h1>
       <h3 class="text-simple">Bem vinda, programadora!</h3>
-      <form class="primary-box">
+      <form class="forms">
+        <label>E-mail:</label>
         ${Input({
-        class: 'js-email-input',
-        placeholder: 'Email',
+        class: 'email-input',
+        placeholder: 'exemplo@seudomínio.com',
+        value:'',
         type: 'email',
         })}
+        <label>Senha:</label>
         ${Input({
-        class: 'js-password-input ',
-        placeholder: 'Senha',
+        class: 'password-input ',
+        placeholder: '********',
+        value:'',
         type: 'password',
         })}
         ${Button({
         id: 'btnLogin',
         title: 'Login',
-        onClick: sendLogin,
+        onClick: loginEmail,
         })}
         <p class="text-simple">Ou entre com:</p>
         ${Button({
-        id: "iGoogle",
+        id: "btnGoogle",
         title: '<i class="fab fa-google"></i>',
         onClick: loginGoogle,
         })}
         ${Button({
-        id: 'forget',
+        id: 'btnForget',
         title: 'Esqueci a senha',
         onClick: forgetPassword,
         })}
       </form>
-    <p class="alertMessage"></p>
+    <p class="alert-message"></p>
     <p class="text-simple">Não tem uma conta?</p>
     ${Button({
-    id: 'register',
+    id: 'btnregister',
     title: 'Registre-se',
     onClick: HashRegister
     })}
@@ -49,9 +53,9 @@ function Login() {
   return template;
 }
 
-function sendLogin() {
-  const email = document.querySelector('.js-email-input').value;
-  const password = document.querySelector('.js-password-input').value;
+function loginEmail() {
+  const email = document.querySelector('.email-input').value;
+  const password = document.querySelector('.password-input').value;
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(() => {
       location.hash = 'post'
@@ -59,11 +63,11 @@ function sendLogin() {
     .catch(function (error) {
       let errorCode = error.code;
       if (errorCode === 'auth/wrong-password') {
-        document.querySelector('.alertMessage').textContent = 'Senha errada!.';
+        document.querySelector('.alert-message').textContent = 'Senha errada!.';
       } if (errorCode === 'auth/user-not-found') {
-        document.querySelector('.alertMessage').textContent = 'Usuário não encontrado.';
+        document.querySelector('.alert-message').textContent = 'Usuário não encontrado.';
       } else {
-        document.querySelector('.alertMessage').textContent = 'Usuário não cadastrado.';
+        document.querySelector('.alert-message').textContent = 'Usuário não cadastrado.';
       }
     })
 }
@@ -76,16 +80,11 @@ function loginGoogle() {
       let token = result.credential.accessToken;
     }
     let user = result.user;
-  }).catch(function (error) {
-    let errorCode = error.code;
-    let errorMessage = error.message;
-    let email = error.email;
-    let credential = error.credential;
-  });
+  })
 }
 
 function forgetPassword() {
-  window.location.hash = 'update';
+  window.location.hash = 'forgot_password';
 }
 
 function HashRegister() {

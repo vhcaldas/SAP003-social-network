@@ -1,83 +1,89 @@
-import Input from '../components/input.js';
+import TextArea from '../components/textarea.js';
 import Button from '../components/button.js';
 import PostCard from '../components/postcard.js';
 import Icons from '../components/icons.js';
 import Menu from '../components/menu.js';
 
+function Post() {
+  const template = `
+  <div class="template">
+    <header class="header2"><img class="img-post" src="./Imagens/header-logo.png" class="img-post"></header>
+    <input type="checkbox" id="btn-menu"/>
+    <label for="btn-menu">&#9776;</label>
+    <nav class="menu">
+    <ul>
+    ${Menu({
+      name: 'Perfil',
+      link: pageProfile,
+    })}
+    ${Menu({
+      name: 'Sair',
+      link: logOut,
+    })}
+    </ul> 
+    </nav>
+    <div class="box-post">
+    <div class="user">
+      <img class = "avatar" src="./Imagens/avatar.png">
+      <div class="user-info">
+        <p class = "name-user">${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.name-user').textContent = doc.data().name })}</p>
+        <p class='job-user'>${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.job-user').textContent = doc.data().job })}</p>
+      </div>
+    </div>
+    <form class="forms-post">
+      ${TextArea({
+      class: 'post',
+      placeholder: 'O que quer compartilhar?',
+    })}
+      ${Button({
+      id: 'btnshare',
+      title: 'Compartilhar',
+      onClick: SharePost,
+    })}
+    </form>
+    <div class="timeline">
+      <ul id="list-post"></ul>
+    </div>
+  </div>`;
+  loadPost();
+  location.hash = 'post';
+  return template;
+}
+
 function loadPost() {
-  const email = firebase.auth().currentUser.emailVerified;
+  const email = firebase.auth().currentUser.email;
   const codUid = firebase.auth().getUid(email);
   firebase.firestore().collection('Posts').where("user", "==", codUid).orderBy("data", "desc").onSnapshot(
     (snap) => {
       snap.forEach((doc) => {
-        templatePosts({ 
+        templatePosts({
           dataId: doc.id,
           like: doc.data().likes,
-          name: doc.data().name, 
-          post: doc.data().post, 
-          time: doc.data().data.toDate().toLocaleString("pt-BR") });
+          name: doc.data().name,
+          post: doc.data().post,
+          time: doc.data().data.toDate().toLocaleString("pt-BR")
+        });
       });
-    });
+    }
+  );
 }
 
 function templatePosts(props) {
-  const timeline = document.getElementById("history");
+  const timeline = document.getElementById("list-post");
   timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
-    ${Icons({id:props.dataId, class:'delete', title:'x',onClick: deletePost,})}
+    ${Icons({ dataId: props.dataId, class: 'delete', title: 'x', onClick: deletePost, })}
     ${PostCard(props)} 
-    ${Icons({id:props.dataId, class:'like', title:`👍 ${props.like}`,onClick: likePost,})}
-    ${Icons({id:props.dataId, class:'edit',title: `📝`, onClick: editPost,})}
-    ${Icons({id:props.dataId, class:'save',title: `💾`, onClick: savePost,})}
-    </div>`
-    document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none';
-}
-
-function Post() {
-  location.hash = 'post'
-  const template = `
-  <header class="header2"><img src="./Imagens/header-logo.png" class="img-post"></header>
-  <input type="checkbox" id="btn-menu"/>
-  <label for="btn-menu">&#9776;</label>
-  <nav class="menu">
-  <ul>
-  ${Menu({
-    name: 'Perfil',
-    link: pagePerfil,
-  })}
-  ${Menu({
-    name: 'Sair',
-    link: logOut,
-  })}
-  </ul> 
-  </nav>
-  <div class="box-post">
-    <div class="user">
-      <img class = "avatar" src="./Imagens/avatar.png">
-      <p class = "name-display">${firebase.auth().currentUser.displayName}</p>
-    </div>
-    <form class="primary-box">
-      ${Input({
-      class: 'js-post',
-      placeholder: 'O que quer compartilhar?',
-      type: 'text',
-      })}
-      ${Button({
-      id: 'share',
-      title: 'Compartilhar',
-      onClick: SharePost,
-      })}
-    </form>
-    <div class="timeline">
-      <ul id="history"></ul>
-    </div>
-  </div>`;
-  loadPost();
-  return template;
+    ${Icons({ dataId: props.dataId, class: 'like', title: `👍 ${props.like}`, onClick: likePost, })}
+    ${Icons({ dataId: props.dataId, class: 'edit', title: `📝`, onClick: editPost, })}
+    ${Icons({
+    dataId: props.dataId, class: 'save', title: `💾`, onClick: savePost, })}
+    </div> `
+  document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none';
 }
 
 function SharePost() {
-  const postText = document.querySelector('.js-post');
-  const email = firebase.auth().currentUser.emailVerified
+  const postText = document.querySelector('.post-textarea').value;
+  const email = firebase.auth().currentUser.email
   const codUid = firebase.auth().getUid(email);
   const time = firebase.firestore.FieldValue.serverTimestamp();
   const name = firebase.auth().currentUser.displayName;
@@ -86,59 +92,63 @@ function SharePost() {
     user: codUid,
     data: time,
     likes: 0,
-    post: postText.value,
+    post: postText,
     comments: []
   }).then(function () {
     location.reload()
-    loadPost();
+    //loadPost();
   })
   document.querySelector('.js-post').value = '';
 }
 
 function deletePost(event) {
-  const idPost = event.target.id;
+  const idPost = event.target.dataset.id;
   firebase.firestore().collection('Posts').doc(idPost).delete();
   event.target.parentElement.remove();
 }
 
 function likePost(event) {
-  const idPost = event.target.id;
+  const idPost = event.target.dataset.id;
   const time = firebase.firestore.FieldValue.serverTimestamp();
-  let y = Number(document.getElementById(idPost).getElementsByClassName('primary-icon-like')[0].textContent.replace(/\D/g,''));
-  y++;
-  firebase.firestore().collection('Posts').doc(idPost).update({
-    likes: y,
-    data: time,
-  }).then(()=>{
-    location.reload()
-  }) 
+  firebase.firestore().collection('Posts').doc(idPost).get().then(function (doc) {
+    let numLikes = doc.data().likes;
+    numLikes++
+    firebase.firestore().collection('Posts').doc(idPost).update({
+      likes: numLikes,
+      time,
+    }).then(() => {
+      location.reload()
+    })
+  })
 }
 
 function editPost(event) {
-  const idPost = event.target.id;
-  const select = document.getElementById(idPost).getElementsByClassName('card-post')[0];
+  const idPost = event.target.dataset.id;
+  const select = document.querySelector(`li[data-id= '${idPost}']`).getElementsByClassName('card-post')[0];
   select.setAttribute('contentEditable', 'true')
   document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'inline';
 }
 
-
 function savePost(event) {
-  const idPost = event.target.id;
-  const newtext = document.getElementById(idPost).getElementsByClassName('card-post')[0].innerHTML;
+  const idPost = event.target.dataset.id;
+  const time = firebase.firestore.FieldValue.serverTimestamp();
+  const newtext = document.querySelector(`li[data-id= '${idPost}']`).getElementsByClassName('card-post')[0].innerHTML;
   firebase.firestore().collection('Posts').doc(idPost).update(
-    {post: newtext}
-  );
+    { post: newtext,
+      time,
+    }).then(() => {
+      location.reload()
+    })
   document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'none';
 }
 
-function pagePerfil(){
-  window.location.hash='perfil'
+function pageProfile() {
+  window.location.hash = 'profile'
 };
 
-function logOut(){
+function logOut() {
   firebase.auth().signOut();
 };
-
 
 window.post = {
   deletePost,

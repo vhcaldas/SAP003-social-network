@@ -371,16 +371,18 @@ label{
     right: 5%;
     margin-top: 1%;
     width: 3%;
+    height: auto;
   }
   .primary-icon-edit {
     width: 3%;
-    height: 5%;
+    height: auto;
     left: 45%;
   }
   .primary-icon-like {
     right: 5%;
     width: 5%;
-    height: 5%;
+    height: auto;
+    margin-bottom: auto;
   }
   .primary-icon-save {
     left: 49%;

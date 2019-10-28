@@ -386,7 +386,7 @@ label{
   }
   .primary-icon-save {
     left: 49%;
-    height: 5%;
+    height: auto;
     width: 3%;
   }
   .register-section{

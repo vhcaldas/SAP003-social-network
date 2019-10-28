@@ -10,9 +10,9 @@
   font-weight: bold;
   margin: 3%;
 }
-
 .avatar {
   height: 70px;
+  padding: 5%;
   margin: 0;
 }
 .button {
@@ -28,34 +28,61 @@
 .button:hover {
   color: #E85531;
 }
-
+#btn-menu:checked ~ .menu{
+  margin-top: -5%;
+  margin-left: 5%;
+  display: block;
+}
+#btnGoogle.button{
+  background-color: #DB4437;
+  border-radius: 50%;
+  height: auto;
+}
+#btnregister.button{
+  display: block;
+  margin: 0 auto 10%;
+}
+#btnForget.button{
+  background-color: transparent;
+  font-weight: normal;
+  text-decoration: underline;
+  padding: 2%;
+  margin: 1%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#btn-menu {
+  display: none;
+}
 .card {
   display: flex;
   flex-flow: column;
   height: auto;
-  width: 90%;
-  padding: 2%;
+  width: 85%;
   border-radius: 10px;
-  box-shadow: 3px 3px 10px 1px #ff1c14;
-  padding: 2% 2% 15% 2%;
+  padding: 0 0 10%;
+  border:1px solid #E85531;
 }
-
 .card-name {
-  display: inline-block;
   font-size: 90%;
   font-weight: bolder;
+  border: none;
+  background-color:#E85531;
+  padding: 0 2%;
 }
 
 .card-post {
   display: inline-block;
   word-wrap: break-word;
+  padding: 2%;
 }
 
 .card-time {
-  display: inline-block;
   font-size: 70%;
-  align-self: flex-start;
-  padding: 1%;
+  border: none;
+  border-radius: 10px 10px 0 0 ;
+  background-color:#E85531;
+  padding: 2% 2% 0;
 }
 .fa-google{
   color: white;
@@ -63,59 +90,68 @@
 .forms{
   display: flex;
   flex-direction: column;
-  padding: 5% 0;
+  padding: 3% 0;
   align-items: center;
 }
 .forms-post{
   display: flex;
-  width: 100%;
   flex-direction: column;
   align-items: center;
-  margin: 10%;
-  justify-content: center;
-  margin: 10% 5%;
+  margin: 10% 5% 0;
+}
+.group-button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .header {
   background-image: radial-gradient(#ffbb36 5%, #E85531);
   height: auto;
 }
-
-.header2 {
-  height: 3em;
+.header-post {
+  height: auto;
   display: flex;
   background-image: radial-gradient(#ffbb36 5%, #E85531);
   width: 100%;
-  min-height: 60px;
-  top: 0;
-  right: 0;
-  left: 0;
 }
-
 .img-post {
-  height: 100%;
-  display: flex;
-  margin-left: 45%;
+  height: 120px;
+  margin: auto;
 }
-
+.input  {
+  width: auto;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 0 3% 5%;
+}
 .job-user{
-  margin-left: 10%;
-  font-weight: 300;
   color: #FF1C14;
-  display: flex;
-  align-self: center;
-  width: 100%;
+  align-items: center;
+  word-wrap: break-word;
+  padding-top: 2%;
 }
 
 label[for="btn-menu"] {
-  padding: 5px;
-  text-align: left;
-  font-size: 100%;
+  padding: 3%;
+  font-size: 150%;
   cursor: pointer;
-  display: flex;
   position: absolute;
-  top: 1%;
+  top: 5%;
   left: 5%;
   border: 2px solid #FFC44F;
+}
+label{
+  font-family: 'Handlee', cursive;
+  font-weight: bold;
+  font-size: large;
+  padding: 2%;
+}
+#list-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
 .logo{
@@ -157,11 +193,10 @@ label[for="btn-menu"] {
   color: black;
 }
 .name-user{
-  margin-left: 10%;
   font-weight: 600;
   color: #FF1C14;
-  display: flex;
   align-self: center;
+  padding-top: 2%;
 }
 
 .name-network {
@@ -173,6 +208,7 @@ label[for="btn-menu"] {
   padding: 4%;
   text-shadow: #df7f1d 2px 2px 2px;
 }
+
 .primary-box {
   display: flex;
   flex-direction: column;
@@ -181,9 +217,14 @@ label[for="btn-menu"] {
 .post-textarea{
   border-radius: 10px;
   height: 80px;
-  width: 85%;
-  padding: 5px;
-  margin-left: 6%
+  width: 90%;
+  padding: 2%;
+  margin-bottom: 2%;
+}
+.post-box{
+  display: flex;
+  justify-content: center;
+  margin: 5% 0;
 }
 .primary-icon {
   border: 1px solid #FFC44F;
@@ -191,58 +232,48 @@ label[for="btn-menu"] {
 }
 .primary-icon-delete {
   position: absolute;
-  right: 5%;
-  margin: 2% 4%;
+  right: 11%;
+  margin: 2% 0;
+  width: 7%;
+  height: 4%;
   font-weight: 900;
   color: red;
 }
 .primary-icon-like {
   position: absolute;
-  margin-bottom: 1%;
-  left: 70%;
+  right: 10%;
   align-self: flex-end;
+  width: 12%;
+  height: 4%;
 }
 
 .primary-icon-edit {
   position: absolute;
   left: 10%;
   align-self: flex-end;
-  margin: 1%;
+  width: 7%;
+  height: 4%;
 }
 .primary-icon-save {
   position: absolute;
   left: 21%;
   align-self: flex-end;
-  margin: 1%;
+  width: 7%;
+  height: 4%;
 }
-.post-box{
-  margin: 10%;
-  display: flex;
-  justify-content: center;
-  margin: 10% 5%;
-}
-.input  {
-  width: auto;
-  border-radius: 15px;
-  padding: 5px;
-  margin: 0 3% 5%;
-}
+
 .register-section {
   display: flex;
   flex-direction: column;
-}
-.text-simple {
-  text-align: center;
-  padding: 2%;
-}
-
-#btn-menu {
-  display: none;
 }
 #saveData {
   padding: 3%;
   margin: 5%;
   background-color: #FFC44F;
+}
+.text-simple {
+  text-align: center;
+  padding: 2%;
 }
 #deleteCount {
   padding: 3%;
@@ -251,92 +282,53 @@ label[for="btn-menu"] {
 .user {
   display: flex;
   justify-content: flex-start;
-  padding: 6%;
   flex-direction: row;
+  margin: 5%;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px 1px #E85531;
 }
 .user-info {
   display: flex;
   flex-direction: column;
 }
-#btnGoogle.button{
-  background-color: #DB4437;
-  border-radius: 50%;
-  height: auto;
-}
-#btnregister.button{
-  display: block;
-}
-#btnForget.button{
-  background-color: transparent;
-  font-weight: normal;
-  padding: 2%;
-  margin: 1%;
-  font-size: 1rem;
-  cursor: pointer;
-}
 
-#list-post {
-  margin: 0;
-  padding: 0;
-}
-
-#iGoogle.primary-button {
-  background-color: #DB4437;
-  border-radius: 50%;
-  height: auto;
-}
-
-#register.primary-button {
-  display: block;
-  margin: auto
-}
-
-label{
-  font-family: 'Handlee', cursive;
-  font-weight: bold;
-  font-size: large;
-  padding: 2%;
-}
-#list-post{
-  margin:0;
-  padding:0;
-}
 @media screen and (min-width: 992px) {
   .avatar {
     height: 80px;
     margin: 0 10px 0 0;
   }
-
-  .box {
-    display: flex;
-    justify-content: center;
-  }
-
   .box-post {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-content: space-between;
-    margin-left: 6%;
+    flex: 1 1 100%
   }
-
   #btn-menu {
     height: auto;
     width: 6%;
   }
-  .card-name {
-    margin-left: 1%;
+  #btn-menu:checked ~ .menu{
+    margin-top: -1.8%;
+    margin-left: 5%;
+    display: block;
   }
-  .card-post {
-    margin-left: 1%;
+  #btn-menu:checked ~ #post.menu{
+    margin-top: 7%;
   }
-  .perfil-section{
-    flex: 1 1 100%;
-    padding: 2% 0 8%;
+  #deleteCount{
+    display: inline-block;
+    width: 100%;
+    padding: 5%
+  }
+  .forms-post {
+    margin: 50px 5% 10% ;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
   }
   .header {
     flex: 1 1 100%;
     display: flex;
+  }
+  .header-post {
+  display: flex;
+  background-image: radial-gradient(#ffbb36 5%, #E85531);
   }
   .job-user{
     margin: 0 20% 0 5%;
@@ -344,100 +336,87 @@ label{
     align-items: baseline;
     width: 75%;
   }
-
   .logo {
     height: auto;
   }
   .login-section{
     flex:1 1 100%;
-    padding: 2%;
   }
   label[for="btn-menu"] {
-    margin-top: 1%;
-    padding-bottom: 0px;
+    padding: 1%;
+  }
+  .name-network{
+    font-size: 450%;
   }
   .name-user{
     display: flex;
     align-self: baseline;
     margin-left: 5%;
   }
-  .register-section{
-    flex:1 1 100%;
-    padding: 2% 0 12%;
+  .group-button{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
   }
-  .forms-post {
-    margin: 0 10% 0;
+  .profile-section{
+    flex: 1 1 100%;
   }
   .post-textarea {
-    width: 50%;
-    margin: 5% 0 0 3%;
+    margin: 3%;
+    width: 85%;
+    border-width: medium;
   }
   .primary-icon-delete {
-    right: 14%;
+    right: 5%;
     margin-top: 1%;
+    width: 3%;
   }
   .primary-icon-edit {
-    margin-right: 35%;
-    margin-left: auto;
+    width: 3%;
+    height: 5%;
+    left: 45%;
   }
-
   .primary-icon-like {
-    margin-left: 9%;
+    right: 5%;
+    width: 5%;
+    height: 5%;
   }
-
   .primary-icon-save {
-    left: auto;
-    margin-right: 33%;
+    left: 49%;
+    height: 5%;
+    width: 3%;
   }
-
-  .register-box {
-    flex: 1 1 100%;
-    padding: 2% 0 12%;
-    width: 50%;
-    margin-left: 25%
-  }
-
-  .timeline {
-    width: 50%;
-    margin: 2%;
-    margin-left: 36%;
-  }
-
-  .update-box {
-    flex: 1 1 100%;
-    padding: 14% 0 14%;
-  }
-
-  .user {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    margin: 6% auto;
-    padding: 0;
-
-  }
-  .name-network{
-    font-size: 450%;
+  .register-section{
+    flex:1 1 100%;
+    padding: 2% 0 2%;
   }
   #saveData{
     display: inline-block;
     width: 100%;
     padding: 5%;
   }
-  #deleteCount{
-    display: inline-block;
-    width: 100%;
-    padding: 5%
-  }
-  .perfilButton{
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
+  .list-post {
     width: 50%;
+    margin: 2%;
+    margin-left: 36%;
   }
-  #btn-menu:checked ~ .menu{
-    margin-left: 0%;
-    display: block;
+  .template{
+    display: flex;
   }
+  .update-box {
+    flex: 1 1 100%;
+    padding: 14% 0 14%;
+  }
+  .user {
+    display: flex;
+    flex: 1 1 50%;
+    justify-content: center;
+    height: 50%;
+    margin: 50px 5%;
+  }
+  .template-post {
+    display: flex;
+  }
+
 }

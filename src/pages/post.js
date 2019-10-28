@@ -6,11 +6,10 @@ import Menu from '../components/menu.js';
 
 function Post() {
   const template = `
-  <div class="template">
-    <header class="header2"><img class="img-post" src="./Imagens/header-logo.png" class="img-post"></header>
-    <input type="checkbox" id="btn-menu"/>
-    <label for="btn-menu">&#9776;</label>
-    <nav class="menu">
+  <header class="header-post"><img class="img-post" src="./Imagens/header-logo.png" class="img-post"></header>
+  <input type="checkbox" id="btn-menu"/>
+  <label for="btn-menu">&#9776;</label>
+  <nav class="menu">
     <ul>
     ${Menu({
       name: 'Perfil',
@@ -21,8 +20,8 @@ function Post() {
       link: logOut,
     })}
     </ul> 
-    </nav>
-    <div class="box-post">
+  </nav>
+  <section class="template-post">
     <div class="user">
       <img class = "avatar" src="./Imagens/avatar.png">
       <div class="user-info">
@@ -30,21 +29,22 @@ function Post() {
         <p class='job-user'>${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.job-user').textContent = doc.data().job })}</p>
       </div>
     </div>
-    <form class="forms-post">
-      ${TextArea({
-      class: 'post',
-      placeholder: 'O que quer compartilhar?',
-    })}
-      ${Button({
-      id: 'btnshare',
-      title: 'Compartilhar',
-      onClick: SharePost,
-    })}
-    </form>
-    <div class="timeline">
+    <div class="box-post">
+      <form class="forms-post">
+        ${TextArea({
+        class: 'post',
+        placeholder: 'O que quer compartilhar?',
+      })}
+        ${Button({
+        id: 'btnshare',
+        title: 'Compartilhar',
+        onClick: SharePost,
+      })}
+      </form>
       <ul id="list-post"></ul>
     </div>
-  </div>`;
+  </section>
+  `;
   loadPost();
   location.hash = 'post';
   return template;
@@ -71,7 +71,7 @@ function loadPost() {
 function templatePosts(props) {
   const timeline = document.getElementById("list-post");
   timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
-    ${Icons({ dataId: props.dataId, class: 'delete', title: 'x', onClick: deletePost, })}
+    ${Icons({ dataId: props.dataId, class: 'delete', title: 'X', onClick: deletePost, })}
     ${PostCard(props)} 
     ${Icons({ dataId: props.dataId, class: 'like', title: `👍 ${props.like}`, onClick: likePost, })}
     ${Icons({ dataId: props.dataId, class: 'edit', title: `📝`, onClick: editPost, })}
@@ -96,7 +96,6 @@ function SharePost() {
     comments: []
   }).then(function () {
     location.reload()
-    //loadPost();
   })
   document.querySelector('.js-post').value = '';
 }
@@ -136,8 +135,6 @@ function savePost(event) {
   firebase.firestore().collection('Posts').doc(idPost).update(
     { post: newtext,
       time,
-    }).then(() => {
-      location.reload()
     })
   document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'none';
 }

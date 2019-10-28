@@ -8,7 +8,7 @@ function Profile() {
     <header class="header"><img class="logo" src="./Imagens/header-logo.png">
     <input type="checkbox" id="btn-menu"/>
     <label for="btn-menu">&#9776;</label>
-    <nav class="menu">
+    <nav class="menu" id="post">
     <ul>
     ${Menu({
     name: 'Feed',
@@ -21,7 +21,7 @@ function Profile() {
     </ul> 
     </nav>
     </header>
-    <section class = "perfil-section">
+    <section class = "profile-section">
       <h1 class="name-network">Heroínas</h1>
       <form class="forms">
         <label>Nome: </label/>
@@ -38,17 +38,17 @@ function Profile() {
         })}
         <label>Ocupação: </label/>
         ${Input({
-          class: 'perfil',
+          class: 'perfil-job',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-job').value = doc.data().job })}`,
           type: 'text',
         })}
         <label>Data de nascimento: </label/> 
         ${Input({
-          class: 'perfil',
+          class: 'perfil-born',
           value:`${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.perfil-born').value = doc.data().dateBorn })}`,
           type: 'text',
         })}
-        <div class="perfilButton">
+        <div class="group-button">
         ${Button({
           id: 'saveData',
           title: 'Salvar dados',

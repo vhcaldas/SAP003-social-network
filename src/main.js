@@ -4,8 +4,6 @@ import Post from './pages/post.js';
 import ForgotPassword from './pages/forgot_password.js'
 import Profile from './pages/profile.js'
 
-window.addEventListener('load', routesPage);
-
 function routesPage() {
   const main = document.querySelector('main')
   firebase.auth().onAuthStateChanged(function (user) {

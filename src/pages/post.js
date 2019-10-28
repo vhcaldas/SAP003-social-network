@@ -135,6 +135,8 @@ function savePost(event) {
   firebase.firestore().collection('Posts').doc(idPost).update(
     { post: newtext,
       time,
+    }).then(() => {
+      location.reload()
     })
   document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'none';
 }

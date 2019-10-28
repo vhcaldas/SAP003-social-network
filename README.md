@@ -5,7 +5,9 @@
   - [Índice](#Índice)
   - [1. Resumo do Projeto.](#1-resumo-do-projeto)
   - [2. Características-Técnicas.](#2-características-técnicas)
-  - [3. Histórias de Usuários.](#3-histórias-de-usuário)
+  - [3. Histórias de Usuários Implementadas](#3-histórias-de-usuário-implementadas)
+  - [4. Tempo do Projeto](#4-tempo-do-projeto)
+  - [5. Template das Telas](#5-template-das-telas)
 
 
 ## 1. Resumo do Projeto
@@ -37,22 +39,21 @@ As **caraterísticas técnicas** da aplicação envolveram:
 
 * Utilizamos módulos do JavaScript ES6 na elaboração do código.
 * Uso de Template strings.
-* Implementaçao de um sistema de rotas (sem uso de bibliotecas externas) para trocar de uma tela para outra de maneira dinâmica (SPA).
+* Implementamos um sistema de rotas (sem uso de bibliotecas externas) para trocar de uma tela para outra de maneira dinâmica (SPA).
 
 ### Persistência de dados
 
-Neste projeto utilizamos o  `Firestore` do `Firebase para estruturação dos dados, como consultá-los, atualizá-los, modificá-los e eliminá-los segundo os requerimentos do usuário.
+Neste projeto, utilizamos o `Firestore` do `Firebase` para estruturação dos dados, para que estes possam ser consultados, atualizados, modificados e eliminados segundo os requerimentos do usuário.
 
 #### Ferramentas utilizadas
 1. HTML 5
 2. CSS
-3. Vanilla JS
+3. *Vanilla* JS
 4. Git e GitHub
 5. Visual Code Studio
-6. Firebase auth, firestore e hosting
+6. Firebase *auth*, *firestore* e *hosting*
 
-
-## 3. Histórias de Usuário
+## 3. Histórias de Usuário Implementadas
  
 * Como usuário novo, devo poder criar uma conta com email e senha válidos para poder iniciar uma sessão e ingressar na Rede Social.
 
@@ -68,11 +69,28 @@ Neste projeto utilizamos o  `Firestore` do `Firebase para estruturação dos dad
 
 * Ao final devo poder ingressar na Rede Social e poder visualizar os dados de meu perfil criado e editá-los.
 
+## 4. Tempo do Projeto
+ 
+O projeto foi elaborado em 3 (três) semanas.
 
+## 5. Template das Telas
+ 
+**Tela do Login:**
 
+![Login](src/Imagens/login.png)
+![Login](src/Imagens/login-cel.png)
 
+**Tela de Registro:**
 
+![Registro](src/Imagens/registro.png)
+![Registro](src/Imagens/registro-cel.png)
 
+**Tela do Feed:**
 
+![Feed](src/Imagens/feed.png)
+![Feed](src/Imagens/feed-cel.png)
 
+**Tela do Perfil:**
 
+![Perfil](src/Imagens/perfil.png)
+![Perfil](src/Imagens/perfil-cel.png)

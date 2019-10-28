@@ -11,45 +11,45 @@ function Register() {
       <form class="forms">
         <label>Nome Completo :</label>      
         ${Input({
-        class: 'name-input',
-        placeholder: 'Mulher Maravilha',
-        value:'',
-        type: 'text',
-        })}
+    class: 'name-input',
+    placeholder: 'Mulher Maravilha',
+    value: '',
+    type: 'text',
+  })}
         <label>Data de nascimento :</label> 
         ${Input({
-        class: 'birth-date-input',
-        placeholder: '',
-        value:'',
-        type: 'date',
-        })}
+    class: 'birth-date-input',
+    placeholder: '',
+    value: '',
+    type: 'date',
+  })}
         <label> Ocupação:</label> 
         ${Input({
-        class: 'job-input',
-        placeholder: 'Desenvolvedora front-end na Heroínas',
-        value:'',
-        type: 'text',
-        })}
+    class: 'job-input',
+    placeholder: 'Desenvolvedora front-end na Heroínas',
+    value: '',
+    type: 'text',
+  })}
         <label> Email:</label> 
         ${Input({
-        class: 'email-input',
-        placeholder:'exemplo@seudomínio.com',
-        value:'',
-        type: 'text',
-      })}
+    class: 'email-input',
+    placeholder: 'exemplo@seudomínio.com',
+    value: '',
+    type: 'text',
+  })}
       <label> Senha:</label> 
           ${Input({
-        class: 'password-input ',
-        placeholder: '********',
-        value:'',
-        type: 'password',
-      })}
+    class: 'password-input ',
+    placeholder: '********',
+    value: '',
+    type: 'password',
+  })}
       <p class="alert-message"></p>
           ${Button({
-        id: 'btncreate-count',
-        title: 'Criar Conta',
-        onClick: createCount,
-      })}
+    id: 'btncreate-count',
+    title: 'Criar Conta',
+    onClick: createCount,
+  })}
     </form>
   </section>
 </div>
@@ -83,11 +83,11 @@ function createCount() {
       let errorCode = error.code;
       let errorMessage = error.message;
       if (errorCode == 'auth/email-already-in-use') {
-        document.querySelector('.alertMessage').textContent ='E-mail já cadastrado.';
+        document.querySelector('.alertMessage').textContent = 'E-mail já cadastrado.';
       } if (errorCode == 'auth/weak-password') {
         document.querySelector('.alertMessage').textContent = 'A senha é muito fraca.';
       } if (errorCode == 'auth/invalid-email') {
-        document.querySelector('.alertMessage').textContent ='E-mail inválido.';
+        document.querySelector('.alertMessage').textContent = 'E-mail inválido.';
       } else {
         document.querySelector('.alertMessage').textContent = errorMessage;
       }

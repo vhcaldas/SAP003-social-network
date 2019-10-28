@@ -11,34 +11,34 @@ function Login() {
       <form class="forms">
         <label>E-mail:</label>
         ${Input({
-        class: 'email-input',
-        placeholder: 'exemplo@seudomínio.com',
-        value:'',
-        type: 'email',
-        })}
+    class: 'email-input',
+    placeholder: 'exemplo@seudomínio.com',
+    value: '',
+    type: 'email',
+  })}
         <label>Senha:</label>
         ${Input({
-        class: 'password-input ',
-        placeholder: '********',
-        value:'',
-        type: 'password',
-        })}
+    class: 'password-input ',
+    placeholder: '********',
+    value: '',
+    type: 'password',
+  })}
         ${Button({
-        id: 'btnLogin',
-        title: 'Login',
-        onClick: loginEmail,
-        })}
+    id: 'btnLogin',
+    title: 'Login',
+    onClick: loginEmail,
+  })}
         <p class="text-simple">Ou entre com:</p>
         ${Button({
-        id: "btnGoogle",
-        title: '<i class="fab fa-google"></i>',
-        onClick: loginGoogle,
-        })}
+    id: "btnGoogle",
+    title: '<i class="fab fa-google"></i>',
+    onClick: loginGoogle,
+  })}
         ${Button({
-        id: 'btnForget',
-        title: 'Esqueci a senha',
-        onClick: forgetPassword,
-        })}
+    id: 'btnForget',
+    title: 'Esqueci a senha',
+    onClick: forgetPassword,
+  })}
       </form>
     <p class="alert-message"></p>
     <p class="text-simple">Não tem uma conta?</p>
@@ -46,7 +46,7 @@ function Login() {
     id: 'btnregister',
     title: 'Registre-se',
     onClick: HashRegister
-    })}
+  })}
   </section>
   </div>
   `;

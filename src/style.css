@@ -4,17 +4,20 @@
   padding: 0;
   justify-content: inherit;
 }
-.alert-message{
+
+.alert-message {
   text-align: center;
   color: #FF1C14;
   font-weight: bold;
   margin: 3%;
 }
+
 .avatar {
   height: 70px;
   padding: 5%;
   margin: 0;
 }
+
 .button {
   background-color: #FFC44F;
   padding: 2%;
@@ -25,24 +28,29 @@
   border: none;
   cursor: pointer;
 }
+
 .button:hover {
   color: #E85531;
 }
-#btn-menu:checked ~ .menu{
+
+#btn-menu:checked~.menu {
   margin-top: -5%;
   margin-left: 5%;
   display: block;
 }
-#btnGoogle.button{
+
+#btnGoogle.button {
   background-color: #DB4437;
   border-radius: 50%;
   height: auto;
 }
-#btnregister.button{
+
+#btnregister.button {
   display: block;
   margin: 0 auto 10%;
 }
-#btnForget.button{
+
+#btnForget.button {
   background-color: transparent;
   font-weight: normal;
   text-decoration: underline;
@@ -51,9 +59,11 @@
   font-size: 1rem;
   cursor: pointer;
 }
+
 #btn-menu {
   display: none;
 }
+
 .card {
   display: flex;
   flex-flow: column;
@@ -61,13 +71,14 @@
   width: 85%;
   border-radius: 10px;
   padding: 0 0 10%;
-  border:1px solid #E85531;
+  border: 1px solid #E85531;
 }
+
 .card-name {
   font-size: 90%;
   font-weight: bolder;
   border: none;
-  background-color:#E85531;
+  background-color: #E85531;
   padding: 0 2%;
 }
 
@@ -80,51 +91,60 @@
 .card-time {
   font-size: 70%;
   border: none;
-  border-radius: 10px 10px 0 0 ;
-  background-color:#E85531;
+  border-radius: 10px 10px 0 0;
+  background-color: #E85531;
   padding: 2% 2% 0;
 }
-.fa-google{
+
+.fa-google {
   color: white;
 }
-.forms{
+
+.forms {
   display: flex;
   flex-direction: column;
   padding: 3% 0;
   align-items: center;
 }
-.forms-post{
+
+.forms-post {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 10% 5% 0;
 }
-.group-button{
+
+.group-button {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 .header {
   background-image: radial-gradient(#ffbb36 5%, #E85531);
   height: auto;
 }
+
 .header-post {
   height: auto;
   display: flex;
   background-image: radial-gradient(#ffbb36 5%, #E85531);
   width: 100%;
 }
+
 .img-post {
   height: 120px;
   margin: auto;
 }
-.input  {
+
+.input {
   width: auto;
   border-radius: 15px;
   padding: 5px;
   margin: 0 3% 5%;
 }
-.job-user{
+
+.job-user {
   color: #FF1C14;
   align-items: center;
   word-wrap: break-word;
@@ -140,12 +160,14 @@ label[for="btn-menu"] {
   left: 5%;
   border: 2px solid #FFC44F;
 }
-label{
+
+label {
   font-family: 'Handlee', cursive;
   font-weight: bold;
   font-size: large;
   padding: 2%;
 }
+
 #list-post {
   display: flex;
   flex-direction: column;
@@ -154,7 +176,7 @@ label{
   padding: 0;
 }
 
-.logo{
+.logo {
   height: 120px;
   display: flex;
   margin: auto;
@@ -192,7 +214,8 @@ label{
   background-color: #FF1C14;
   color: black;
 }
-.name-user{
+
+.name-user {
   font-weight: 600;
   color: #FF1C14;
   align-self: center;
@@ -214,22 +237,26 @@ label{
   flex-direction: column;
   width: 35%;
 }
-.post-textarea{
+
+.post-textarea {
   border-radius: 10px;
   height: 80px;
   width: 90%;
   padding: 2%;
   margin-bottom: 2%;
 }
-.post-box{
+
+.post-box {
   display: flex;
   justify-content: center;
   margin: 5% 0;
 }
+
 .primary-icon {
   border: 1px solid #FFC44F;
   border-radius: 1%;
 }
+
 .primary-icon-delete {
   position: absolute;
   right: 11%;
@@ -239,6 +266,7 @@ label{
   font-weight: 900;
   color: red;
 }
+
 .primary-icon-like {
   position: absolute;
   right: 10%;
@@ -254,6 +282,7 @@ label{
   width: 7%;
   height: 4%;
 }
+
 .primary-icon-save {
   position: absolute;
   left: 21%;
@@ -266,19 +295,23 @@ label{
   display: flex;
   flex-direction: column;
 }
+
 #saveData {
   padding: 3%;
   margin: 5%;
   background-color: #FFC44F;
 }
+
 .text-simple {
   text-align: center;
   padding: 2%;
 }
+
 #deleteCount {
   padding: 3%;
   background-color: #e86b76;
 }
+
 .user {
   display: flex;
   justify-content: flex-start;
@@ -287,6 +320,7 @@ label{
   border-radius: 10px;
   box-shadow: 3px 3px 10px 1px #E85531;
 }
+
 .user-info {
   display: flex;
   flex-direction: column;
@@ -297,119 +331,146 @@ label{
     height: 80px;
     margin: 0 10px 0 0;
   }
+
   .box-post {
     flex: 1 1 100%
   }
+
   #btn-menu {
     height: auto;
     width: 6%;
   }
-  #btn-menu:checked ~ .menu{
+
+  #btn-menu:checked~.menu {
     margin-top: -1.8%;
     margin-left: 5%;
     display: block;
   }
-  #btn-menu:checked ~ #post.menu{
+
+  #btn-menu:checked~#post.menu {
     margin-top: 7%;
   }
-  #deleteCount{
+
+  #deleteCount {
     display: inline-block;
     width: 100%;
     padding: 5%
   }
+
   .forms-post {
-    margin: 50px 5% 10% ;
+    margin: 50px 5% 10%;
     border: 1px solid lightgrey;
     border-radius: 10px;
   }
+
   .header {
     flex: 1 1 100%;
     display: flex;
   }
+
   .header-post {
-  display: flex;
-  background-image: radial-gradient(#ffbb36 5%, #E85531);
+    display: flex;
+    background-image: radial-gradient(#ffbb36 5%, #E85531);
   }
-  .job-user{
+
+  .job-user {
     margin: 0 20% 0 5%;
     height: auto;
     align-items: baseline;
     width: 75%;
   }
+
   .logo {
     height: auto;
   }
-  .login-section{
-    flex:1 1 100%;
+
+  .login-section {
+    flex: 1 1 100%;
   }
+
   label[for="btn-menu"] {
     padding: 1%;
   }
-  .name-network{
+
+  .name-network {
     font-size: 450%;
   }
-  .name-user{
+
+  .name-user {
     display: flex;
     align-self: baseline;
     margin-left: 5%;
   }
-  .group-button{
+
+  .group-button {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     width: 50%;
   }
-  .profile-section{
+
+  .profile-section {
     flex: 1 1 100%;
   }
+
   .post-textarea {
     margin: 3%;
     width: 85%;
     border-width: medium;
   }
+
   .primary-icon-delete {
     right: 5%;
     margin-top: 1%;
     width: 3%;
     height: auto;
   }
+
   .primary-icon-edit {
     width: 3%;
     height: auto;
     left: 45%;
   }
+
   .primary-icon-like {
     right: 5%;
     width: 5%;
     height: auto;
     margin-bottom: auto;
   }
+
   .primary-icon-save {
     left: 49%;
     height: auto;
     width: 3%;
   }
-  .register-section{
-    flex:1 1 100%;
+
+  .register-section {
+    flex: 1 1 100%;
     padding: 2% 0 2%;
   }
-  #saveData{
+
+  #saveData {
     display: inline-block;
     width: 100%;
     padding: 5%;
   }
+
   .list-post {
     width: 50%;
     margin: 2%;
     margin-left: 36%;
   }
-  .template{
+
+  .template {
     display: flex;
   }
+
   .update-box {
     flex: 1 1 100%;
     padding: 14% 0 14%;
   }
+
   .user {
     display: flex;
     flex: 1 1 50%;
@@ -417,6 +478,7 @@ label{
     height: 50%;
     margin: 50px 5%;
   }
+
   .template-post {
     display: flex;
   }

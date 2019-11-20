@@ -70,8 +70,8 @@ function createCount() {
         displayName: name,
       });
       firebase.auth().currentUser.sendEmailVerification()
-      const email = firebase.auth().currentUser.email;
-      const codUid = firebase.auth().getUid(email);
+      const codUid = firebase.auth().currentUser.uid;
+      
       firebase.firestore().collection('users').doc(codUid).set({
         name,
         dateBorn: born,
@@ -80,8 +80,8 @@ function createCount() {
       window.location.hash = 'login';
     })
     .catch(function (error) {
-      let errorCode = error.code;
-      let errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
       if (errorCode == 'auth/email-already-in-use') {
         document.querySelector('.alertMessage').textContent = 'E-mail já cadastrado.';
       } if (errorCode == 'auth/weak-password') {

@@ -11,16 +11,16 @@ function ForgotPassword() {
       <form class="forms">
         <label>E-mail cadastrado:</label>
         ${Input({
-        class: 'email-input',
-        placeholder: 'exemplo@seudomínio.com',
-        value: '',
-        type: 'email',
-        })}
+    class: 'email-input',
+    placeholder: 'exemplo@seudomínio.com',
+    value: '',
+    type: 'email',
+  })}
         ${Button({
-        id: 'btnResetpassword',
-        title: 'Enviar email para redefinir senha',
-        onClick: resetPassword,
-        })}
+    id: 'btnResetpassword',
+    title: 'Enviar email para redefinir senha',
+    onClick: resetPassword,
+  })}
       </form>
     <p class="alert-message"></p>
     </section>

@@ -12,13 +12,13 @@ function Post() {
   <nav class="menu">
     <ul>
     ${Menu({
-      name: 'Perfil',
-      link: pageProfile,
-    })}
+    name: 'Perfil',
+    link: pageProfile,
+  })}
     ${Menu({
-      name: 'Sair',
-      link: logOut,
-    })}
+    name: 'Sair',
+    link: logOut,
+  })}
     </ul> 
   </nav>
   <section class="template-post">
@@ -32,14 +32,14 @@ function Post() {
     <div class="box-post">
       <form class="forms-post">
         ${TextArea({
-        class: 'post',
-        placeholder: 'O que quer compartilhar?',
-      })}
+    class: 'post',
+    placeholder: 'O que quer compartilhar?',
+  })}
         ${Button({
-        id: 'btnshare',
-        title: 'Compartilhar',
-        onClick: SharePost,
-      })}
+    id: 'btnshare',
+    title: 'Compartilhar',
+    onClick: SharePost,
+  })}
       </form>
       <ul id="list-post"></ul>
     </div>
@@ -76,7 +76,8 @@ function templatePosts(props) {
     ${Icons({ dataId: props.dataId, class: 'like', title: `👍 ${props.like}`, onClick: likePost, })}
     ${Icons({ dataId: props.dataId, class: 'edit', title: `📝`, onClick: editPost, })}
     ${Icons({
-    dataId: props.dataId, class: 'save', title: `💾`, onClick: savePost, })}
+    dataId: props.dataId, class: 'save', title: `💾`, onClick: savePost,
+  })}
     </div> `
   document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none';
 }
@@ -133,7 +134,8 @@ function savePost(event) {
   const time = firebase.firestore.FieldValue.serverTimestamp();
   const newtext = document.querySelector(`li[data-id= '${idPost}']`).getElementsByClassName('card-post')[0].innerHTML;
   firebase.firestore().collection('Posts').doc(idPost).update(
-    { post: newtext,
+    {
+      post: newtext,
       time,
     }).then(() => {
       location.reload()

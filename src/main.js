@@ -12,7 +12,7 @@ function routesPage() {
         user ? window.location = "#post" : main.innerHTML = Register();
         break;
       case "#login":
-        user ? window.location.hash = "#post": main.innerHTML = Login();
+        user ? window.location.hash = "#post" : main.innerHTML = Login();
         break;
       case "#forgot_password":
         user ? window.location = "#post" : main.innerHTML = ForgotPassword();

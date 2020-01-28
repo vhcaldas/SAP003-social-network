@@ -53,19 +53,23 @@ function Post() {
 function loadPost() {
   const email = firebase.auth().currentUser.email;
   const codUid = firebase.auth().getUid(email);
-  firebase.firestore().collection('Posts').where("user", "==", codUid).orderBy("data", "desc").onSnapshot(
-    (snap) => {
-      snap.forEach((doc) => {
-        templatePosts({
-          dataId: doc.id,
-          like: doc.data().likes,
-          name: doc.data().name,
-          post: doc.data().post,
-          time: doc.data().data.toDate().toLocaleString("pt-BR")
+  firebase.firestore()
+    .collection('Posts')
+    .where("user", "==", codUid)
+    .orderBy("data", "desc")
+    .onSnapshot(
+      (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          templatePosts({
+            dataId: doc.id,
+            like: doc.data().likes,
+            name: doc.data().name,
+            post: doc.data().post,
+            time: doc.data().data.toDate().toLocaleString("pt-BR")
+          });
         });
-      });
-    }
-  );
+      }
+    );
 }
 
 function templatePosts(props) {

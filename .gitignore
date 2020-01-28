@@ -15,6 +15,9 @@ firebase-debug.log*
 
 /src/pages/firebase.config.js
 
+.firestore.rules
+
+
 # Runtime data
 pids
 *.pid

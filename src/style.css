@@ -260,9 +260,7 @@ label {
 .primary-icon-delete {
   position: absolute;
   right: 11%;
-  margin: 2% 0;
-  width: 7%;
-  height: 4%;
+  margin: 2vw 0;
   font-weight: 900;
   color: red;
 }
@@ -287,8 +285,9 @@ label {
   position: absolute;
   left: 21%;
   align-self: flex-end;
-  width: 7%;
-  height: 4%;
+  width: 2vw;
+height: 2vh;
+margin: 2vw 0 2vw 0;
 }
 
 .register-section {

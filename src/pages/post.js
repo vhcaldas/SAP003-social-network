@@ -4,7 +4,7 @@ import PostCard from '../components/postcard.js';
 import Icons from '../components/icons.js';
 import Menu from '../components/menu.js';
 
-function Post() {
+function Post(name) {
   const template = `
   <header class="header-post"><img class="img-post" src="./Imagens/header-logo.png" class="img-post"></header>
   <input type="checkbox" id="btn-menu"/>
@@ -25,8 +25,13 @@ function Post() {
     <div class="user">
       <img class = "avatar" src="./Imagens/avatar.png">
       <div class="user-info">
-        <p class = "name-user">${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.name-user').textContent = doc.data().name })}</p>
-        <p class='job-user'>${firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).get().then(function (doc) { document.querySelector('.job-user').textContent = doc.data().job })}</p>
+        <p class = "name-user">${name}</p>
+        <p class='job-user'>${firebase.firestore()
+          .collection('users')
+          .doc(firebase.auth().getUid(firebase.auth().currentUser.email))
+          .get()
+          .then(function (doc) { 
+            document.querySelector('.job-user').textContent = doc.data().job })}</p>
       </div>
     </div>
     <div class="box-post">
@@ -59,13 +64,15 @@ function loadPost() {
     .orderBy("data", "desc")
     .onSnapshot(
       (querySnapshot) => {
+        const timeline = document.getElementById("list-post");
+        timeline.innerHTML = '';
         querySnapshot.forEach((doc) => {
           templatePosts({
             dataId: doc.id,
             like: doc.data().likes,
             name: doc.data().name,
             post: doc.data().post,
-            time: doc.data().data.toDate().toLocaleString("pt-BR")
+            time: doc.data().data.toDate().toLocaleString("pt-BR"),
           });
         });
       }
@@ -88,21 +95,29 @@ function templatePosts(props) {
 
 function SharePost() {
   const postText = document.querySelector('.post-textarea').value;
-  const email = firebase.auth().currentUser.email
+  const email = firebase.auth().currentUser.email;
   const codUid = firebase.auth().getUid(email);
   const time = firebase.firestore.FieldValue.serverTimestamp();
   const name = firebase.auth().currentUser.displayName;
-  firebase.firestore().collection('Posts').add({
-    name: name,
-    user: codUid,
-    data: time,
-    likes: 0,
-    post: postText,
-    comments: []
-  }).then(function () {
-    location.reload()
-  })
-  document.querySelector('.js-post').value = '';
+  if (postText === ''){ 
+    alert('Digite uma mensagem!')
+  } else {
+    firebase
+    .firestore()
+    .collection('Posts')
+    .add({
+      name: name,
+      user: codUid,
+      data: time,
+      likes: 0,
+      post: postText,
+      comments: []
+    }) .then((createdPost) => {
+
+    })
+    document.querySelector('.post-textarea').value = '';
+    
+  }
 }
 
 function deletePost(event) {

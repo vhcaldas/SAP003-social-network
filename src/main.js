@@ -7,6 +7,7 @@ import Profile from './pages/profile.js'
 function routesPage() {
   const main = document.querySelector('main')
   firebase.auth().onAuthStateChanged(function (user) {
+    const name = user.displayName
     switch (location.hash) {
       case "#register":
         user ? window.location = "#post" : main.innerHTML = Register();
@@ -21,7 +22,7 @@ function routesPage() {
         user ? main.innerHTML = Profile() : window.location = "#login";
         break;
       case "#post":
-        user ? main.innerHTML = Post() : window.location = "#login";
+        user ? main.innerHTML = Post(name) : window.location = "#login";
         break;
       default:
         window.location = "#login";

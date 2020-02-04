@@ -1,11 +1,11 @@
 function Input(props) {
-    const template = `
+  const template = `
     <input
         class="${props.class} input"
         placeholder="${props.placeholder}"
         value="${props.value}"
         type="${props.type}">
     `;
-    return template;
+  return template;
 }
 export default Input;

@@ -1,10 +1,19 @@
 import Button from '../components/button.js';
 import Input from '../components/input.js';
+import Header from '../components/header.js';
+
+function resetPassword() {
+  const emailAddress = document.querySelector('.email-input').value;
+  firebase.auth().sendPasswordResetEmail(emailAddress)
+    .then(() => {
+      document.querySelector('.alertMessage').textContent = 'Email enviado <br> Verifique sua caixa de email';
+    });
+}
 
 function ForgotPassword() {
   const template = `
   <div class="template">
-    <header class="header"><img class="logo" src="./Imagens/header-logo.png"></header>
+    ${Header({ class: 'header' })}
     <section class = "forgot-password-section">
       <h1 class="name-network">Heroínas</h1>
       <h3 class="text-simple">Redefinição de Senha!</h3>
@@ -26,15 +35,9 @@ function ForgotPassword() {
     </section>
   </div>
   `;
-  location.hash = 'forgot_password'
+  window.location.hash = 'forgot_password';
   return template;
 }
 
-function resetPassword() {
-  const emailAddress = document.querySelector('.email-input').value;
-  firebase.auth().sendPasswordResetEmail(emailAddress).then(function () {
-    document.querySelector('.alertMessage').textContent = 'Email enviado <br> Verifique sua caixa de email';
-  })
-}
 
 export default ForgotPassword;

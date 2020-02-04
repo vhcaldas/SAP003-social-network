@@ -3,12 +3,12 @@ import Button from '../components/button.js';
 import PostCard from '../components/postcard.js';
 import Icons from '../components/icons.js';
 import Menu from '../components/menu.js';
+import Header from '../components/header.js';
 
-/* eslint-disable no-use-before-define, no-alert, no-plusplus, no-restricted-globals, */
+/* eslint-disable no-use-before-define, no-alert, no-plusplus */
 
 function loadPost() {
-  const email = firebase.auth().currentUser.email;
-  const codUid = firebase.auth().getUid(email);
+  const codUid = firebase.auth().currentUser.uid;
   firebase.firestore()
     .collection('Posts')
     .where('user', '==', codUid)
@@ -17,13 +17,13 @@ function loadPost() {
       (querySnapshot) => {
         const timeline = document.getElementById('list-post');
         timeline.innerHTML = '';
-        querySnapshot.forEach((doc) => {
+        querySnapshot.forEach((posts) => {
           templatePosts({
-            dataId: doc.id,
-            like: doc.data().likes,
-            name: doc.data().name,
-            post: doc.data().post,
-            time: doc.data().data.toDate().toLocaleString('pt-BR'),
+            dataId: posts.id,
+            like: posts.data().likes,
+            name: posts.data().name,
+            post: posts.data().post,
+            time: posts.data().data.toDate().toLocaleString('pt-BR'),
           });
         });
       },
@@ -32,8 +32,7 @@ function loadPost() {
 
 function SharePost() {
   const postText = document.querySelector('.post-textarea').value;
-  const email = firebase.auth().currentUser.email;
-  const codUid = firebase.auth().getUid(email);
+  const codUid = firebase.auth().currentUser.uid;
   const time = firebase.firestore.FieldValue.serverTimestamp();
   const name = firebase.auth().currentUser.displayName;
   if (postText === '') {
@@ -49,8 +48,13 @@ function SharePost() {
         likes: 0,
         post: postText,
         comments: [],
+      })
+      .then((docRef) => {
+        firebase.firestore().collection('Posts')
+          .doc(docRef.id)
+          .update({ dataId: docRef.id });
+        document.querySelector('.post-textarea').value = '';
       });
-    document.querySelector('.post-textarea').value = '';
   }
 }
 
@@ -64,8 +68,8 @@ function likePost(event) {
   const idPost = event.target.dataset.id;
   const time = firebase.firestore.FieldValue.serverTimestamp();
   firebase.firestore().collection('Posts').doc(idPost).get()
-    .then((doc) => {
-      let numLikes = doc.data().likes;
+    .then((foundlikes) => {
+      let numLikes = foundlikes.data().likes;
       numLikes++;
       firebase.firestore().collection('Posts').doc(idPost).update({
         likes: numLikes,
@@ -78,6 +82,7 @@ function editPost(event) {
   const idPost = event.target.dataset.id;
   const select = document.querySelector(`li[data-id= '${idPost}']`).getElementsByClassName('card-post')[0];
   select.setAttribute('contentEditable', 'true');
+  select.focus();
   document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'inline';
 }
 
@@ -94,9 +99,50 @@ function savePost(event) {
   document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'none';
 }
 
+function pageProfile() {
+  window.location.hash = 'profile';
+}
+
+function logOut() {
+  firebase.auth().signOut();
+}
+
+function templatePosts(props) {
+  const timeline = document.getElementById('list-post');
+  timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
+    ${Icons({
+    dataId: props.dataId,
+    class: 'delete',
+    title: 'X',
+    onClick: deletePost,
+  })}
+    ${PostCard(props)} 
+    ${Icons({
+    dataId: props.dataId,
+    class: 'like',
+    title: `👍 ${props.like}`,
+    onClick: likePost,
+  })}
+    ${Icons({
+    dataId: props.dataId,
+    class: 'edit',
+    title: '📝',
+    onClick: editPost,
+  })}
+    ${Icons({
+    dataId: props.dataId,
+    class: 'save',
+    title: '💾',
+    onClick: savePost,
+  })}
+    </div> `;
+  document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none';
+}
+
 function Post(name) {
   const template = `
-  <header class="header-post"><img class="img-post" src="./Imagens/header-logo.png" class="img-post"></header>
+  ${Header({ class: 'header-post' })}
+  <input type="checkbox" id="btn-menu"/>
   <input type="checkbox" id="btn-menu"/>
   <label for="btn-menu">&#9776;</label>
   <nav class="menu">
@@ -116,9 +162,8 @@ function Post(name) {
       <img class = "avatar" src="./Imagens/avatar.png">
       <div class="user-info">
         <p class = "name-user">${name}</p>
-        <p class='job-user'>${firebase.firestore()
-    .collection('users')
-    .doc(firebase.auth().getUid(firebase.auth().currentUser.email))
+        <p class='job-user'>
+        ${firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid)
     .get()
     .then((doc) => {
       document.querySelector('.job-user').textContent = doc.data().job;
@@ -142,37 +187,8 @@ function Post(name) {
   </section>
   `;
   loadPost();
-  location.hash = 'post';
+  window.location.hash = 'post';
   return template;
-}
-
-
-function templatePosts(props) {
-  const timeline = document.getElementById('list-post');
-  timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
-    ${Icons({
-    dataId: props.dataId, class: 'delete', title: 'X', onClick: deletePost,
-  })}
-    ${PostCard(props)} 
-    ${Icons({
-    dataId: props.dataId, class: 'like', title: `👍 ${props.like}`, onClick: likePost,
-  })}
-    ${Icons({
-    dataId: props.dataId, class: 'edit', title: '📝', onClick: editPost,
-  })}
-    ${Icons({
-    dataId: props.dataId, class: 'save', title: '💾', onClick: savePost,
-  })}
-    </div> `;
-  document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none';
-}
-
-function pageProfile() {
-  window.location.hash = 'profile';
-}
-
-function logOut() {
-  firebase.auth().signOut();
 }
 
 window.post = {

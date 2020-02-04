@@ -12,7 +12,18 @@ function logOut() {
 }
 
 function deleteCount() {
-  firebase.auth().currentUser.delete();
+  document.querySelector('#myModal').classList.add('show');
+  document.querySelector('.modal-content').innerHTML = `<div>
+  <span>Deletar conta</span>
+  <button onclick=document.getElementById('myModal').classList.remove('show')>
+    X
+  </button>
+  <button 
+  onclick=firebase.auth().currentUser.delete()
+  .then(document.getElementById('myModal').classList.remove('show'))>
+    Deletar conta
+  </button>
+  </div>`;
 }
 
 function saveData() {
@@ -20,9 +31,13 @@ function saveData() {
   const email = document.querySelector('.email-perfil').value;
   const job = document.querySelector('.perfil-job').value;
   const dateBorn = document.querySelector('.perfil-born').value;
-  firebase.firestore().collection('users').doc(firebase.auth().getUid(firebase.auth().currentUser.email)).update(
-    { job, dateBorn },
-  );
+  firebase
+    .firestore()
+    .collection('users')
+    .doc(firebase.auth().getUid(firebase.auth().currentUser.email))
+    .update(
+      { job, dateBorn },
+    );
   firebase.auth().currentUser.updateProfile({
     displayName: name,
     email,
@@ -32,7 +47,7 @@ function saveData() {
 function Profile() {
   const template = `
   <div class="template">
-    ${Header({ class: 'header' })}
+    ${Header({ class: 'header', classImg: 'logo' })}
     <input type="checkbox" id="btn-menu"/>
     <label for="btn-menu">&#9776;</label>
     <nav class="menu" id="post">
@@ -88,12 +103,12 @@ function Profile() {
     type: 'text',
   })}
         <div class="group-button">
-        ${Button({
+          ${Button({
     id: 'saveData',
     title: 'Salvar dados',
     onClick: saveData,
   })}
-        ${Button({
+          ${Button({
     id: 'deleteCount',
     title: 'Deletar conta',
     onClick: deleteCount,
@@ -101,6 +116,10 @@ function Profile() {
         </div>
     </form>
   </section>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+    </div>
+  </div>
 </div>
   `;
   window.location.hash = 'profile';

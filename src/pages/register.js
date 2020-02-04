@@ -41,7 +41,7 @@ function createCount() {
 function Register() {
   const template = `
   <div class="template">
-    ${Header({ class: 'header' })}
+    ${Header({ class: 'header', classImg: 'logo' })}
     <section class = "register-section">
       <h1 class="name-network">Heroínas</h1>
       <h3 class="text-simple">Para fazer seu cadastro na rede Heroínas preencha os campos abaixo!</h3>

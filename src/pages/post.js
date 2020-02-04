@@ -35,27 +35,23 @@ function SharePost() {
   const codUid = firebase.auth().currentUser.uid;
   const time = firebase.firestore.FieldValue.serverTimestamp();
   const name = firebase.auth().currentUser.displayName;
-  if (postText === '') {
-    alert('Digite uma mensagem!');
-  } else {
-    firebase
-      .firestore()
-      .collection('Posts')
-      .add({
-        name,
-        user: codUid,
-        data: time,
-        likes: 0,
-        post: postText,
-        comments: [],
-      })
-      .then((docRef) => {
-        firebase.firestore().collection('Posts')
-          .doc(docRef.id)
-          .update({ dataId: docRef.id });
-        document.querySelector('.post-textarea').value = '';
-      });
-  }
+  firebase
+    .firestore()
+    .collection('Posts')
+    .add({
+      name,
+      user: codUid,
+      data: time,
+      likes: 0,
+      post: postText,
+      comments: [],
+    })
+    .then((docRef) => {
+      firebase.firestore().collection('Posts')
+        .doc(docRef.id)
+        .update({ dataId: docRef.id });
+      document.querySelector('.post-textarea').value = '';
+    });
 }
 
 function deletePost(event) {
@@ -139,10 +135,9 @@ function templatePosts(props) {
   document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none';
 }
 
-function Post(name) {
+function Post() {
   const template = `
-  ${Header({ class: 'header-post' })}
-  <input type="checkbox" id="btn-menu"/>
+  ${Header({ class: 'header-post', classImg: 'logo-post' })}
   <input type="checkbox" id="btn-menu"/>
   <label for="btn-menu">&#9776;</label>
   <nav class="menu">
@@ -161,7 +156,9 @@ function Post(name) {
     <div class="user">
       <img class = "avatar" src="./Imagens/avatar.png">
       <div class="user-info">
-        <p class = "name-user">${name}</p>
+      <p class = "name-user">
+        ${firebase.auth().currentUser.displayName}
+      </p>
         <p class='job-user'>
         ${firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid)
     .get()
@@ -172,7 +169,7 @@ function Post(name) {
     </div>
     <div class="box-post">
       <form class="forms-post">
-        ${TextArea({
+    ${TextArea({
     class: 'post',
     placeholder: 'O que quer compartilhar?',
   })}
@@ -187,7 +184,6 @@ function Post(name) {
   </section>
   `;
   loadPost();
-  window.location.hash = 'post';
   return template;
 }
 

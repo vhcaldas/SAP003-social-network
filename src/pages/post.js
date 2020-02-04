@@ -3,8 +3,9 @@ import Button from '../components/button.js';
 import PostCard from '../components/postcard.js';
 import Icons from '../components/icons.js';
 import Menu from '../components/menu.js';
+import Header from '../components/header.js';
 
-/* eslint-disable no-use-before-define, no-alert, no-plusplus, no-restricted-globals, */
+/* eslint-disable no-use-before-define, no-alert, no-plusplus */
 
 function loadPost() {
   const email = firebase.auth().currentUser.email;
@@ -96,7 +97,8 @@ function savePost(event) {
 
 function Post(name) {
   const template = `
-  <header class="header-post"><img class="img-post" src="./Imagens/header-logo.png" class="img-post"></header>
+  ${Header({ class: 'header-post' })}
+  <input type="checkbox" id="btn-menu"/>
   <input type="checkbox" id="btn-menu"/>
   <label for="btn-menu">&#9776;</label>
   <nav class="menu">
@@ -142,7 +144,7 @@ function Post(name) {
   </section>
   `;
   loadPost();
-  location.hash = 'post';
+  window.location.hash = 'post';
   return template;
 }
 

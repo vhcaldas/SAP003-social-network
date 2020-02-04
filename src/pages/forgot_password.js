@@ -1,6 +1,14 @@
 import Button from '../components/button.js';
 import Input from '../components/input.js';
 
+function resetPassword() {
+  const emailAddress = document.querySelector('.email-input').value;
+  firebase.auth().sendPasswordResetEmail(emailAddress)
+    .then(() => {
+      document.querySelector('.alertMessage').textContent = 'Email enviado <br> Verifique sua caixa de email';
+    });
+}
+
 function ForgotPassword() {
   const template = `
   <div class="template">
@@ -26,15 +34,9 @@ function ForgotPassword() {
     </section>
   </div>
   `;
-  location.hash = 'forgot_password'
+  window.location.hash = 'forgot_password';
   return template;
 }
 
-function resetPassword() {
-  const emailAddress = document.querySelector('.email-input').value;
-  firebase.auth().sendPasswordResetEmail(emailAddress).then(function () {
-    document.querySelector('.alertMessage').textContent = 'Email enviado <br> Verifique sua caixa de email';
-  })
-}
 
 export default ForgotPassword;

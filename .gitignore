@@ -17,8 +17,6 @@ firebase-debug.log*
 
 .firestore.rules
 
-.firebase/
-
 # Runtime data
 pids
 *.pid

@@ -1,6 +1,45 @@
 import Button from '../components/button.js';
 import Input from '../components/input.js';
 
+function loginEmail() {
+  const email = document.querySelector('.email-input').value;
+  const password = document.querySelector('.password-input').value;
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(() => {
+      window.location.hash = 'post';
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      if (errorCode === 'auth/wrong-password') {
+        document.querySelector('.alert-message').textContent = 'Senha errada!.';
+      } if (errorCode === 'auth/user-not-found') {
+        document.querySelector('.alert-message').textContent = 'Usuário não encontrado.';
+      } else {
+        document.querySelector('.alert-message').textContent = 'Usuário não cadastrado.';
+      }
+    });
+}
+
+function loginGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithRedirect(provider);
+  firebase.auth().getRedirectResult()
+    .then((result) => {
+      if (result.credential) {
+        return result.credential.accessToken;
+      }
+      return result.user;
+    });
+}
+
+function forgetPassword() {
+  window.location.hash = 'forgot_password';
+}
+
+function HashRegister() {
+  window.location.hash = 'register';
+}
+
 function Login() {
   const template = `
   <div class="template">
@@ -30,7 +69,7 @@ function Login() {
   })}
         <p class="text-simple">Ou entre com:</p>
         ${Button({
-    id: "btnGoogle",
+    id: 'btnGoogle',
     title: '<i class="fab fa-google"></i>',
     onClick: loginGoogle,
   })}
@@ -45,50 +84,12 @@ function Login() {
     ${Button({
     id: 'btnregister',
     title: 'Registre-se',
-    onClick: HashRegister
+    onClick: HashRegister,
   })}
   </section>
   </div>
   `;
   return template;
-}
-
-function loginEmail() {
-  const email = document.querySelector('.email-input').value;
-  const password = document.querySelector('.password-input').value;
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(() => {
-      location.hash = 'post'
-    })
-    .catch(function (error) {
-      let errorCode = error.code;
-      if (errorCode === 'auth/wrong-password') {
-        document.querySelector('.alert-message').textContent = 'Senha errada!.';
-      } if (errorCode === 'auth/user-not-found') {
-        document.querySelector('.alert-message').textContent = 'Usuário não encontrado.';
-      } else {
-        document.querySelector('.alert-message').textContent = 'Usuário não cadastrado.';
-      }
-    })
-}
-
-function loginGoogle() {
-  let provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithRedirect(provider);
-  firebase.auth().getRedirectResult().then(function (result) {
-    if (result.credential) {
-      let token = result.credential.accessToken;
-    }
-    let user = result.user;
-  })
-}
-
-function forgetPassword() {
-  window.location.hash = 'forgot_password';
-}
-
-function HashRegister() {
-  window.location.hash = 'register';
 }
 
 export default Login;

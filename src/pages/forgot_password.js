@@ -1,5 +1,6 @@
 import Button from '../components/button.js';
 import Input from '../components/input.js';
+import Header from '../components/header.js';
 
 function resetPassword() {
   const emailAddress = document.querySelector('.email-input').value;
@@ -12,7 +13,7 @@ function resetPassword() {
 function ForgotPassword() {
   const template = `
   <div class="template">
-    <header class="header"><img class="logo" src="./Imagens/header-logo.png"></header>
+    ${Header({ class: 'header' })}
     <section class = "forgot-password-section">
       <h1 class="name-network">Heroínas</h1>
       <h3 class="text-simple">Redefinição de Senha!</h3>

@@ -1,5 +1,6 @@
 import Button from '../components/button.js';
 import Input from '../components/input.js';
+import Header from '../components/header.js';
 
 function loginEmail() {
   const email = document.querySelector('.email-input').value;
@@ -43,7 +44,7 @@ function HashRegister() {
 function Login() {
   const template = `
   <div class="template">
-    <header class="header"><img class="logo" src="./Imagens/header-logo.png"></header>
+  ${Header({ class: 'header' })}
     <section class ="login-section">
       <h1 class="name-network">Heroínas</h1>
       <h3 class="text-simple">Bem vinda, programadora!</h3>

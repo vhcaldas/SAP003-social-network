@@ -9,7 +9,7 @@ import Profile from './pages/profile.js';
 function routesPage() {
   const main = document.querySelector('main');
   firebase.auth().onAuthStateChanged(((user) => {
-    const name = user.displayName;
+    /* const name = user.displayName; */
     switch (window.location.hash) {
       case '#register':
         user ? window.location = '#post' : main.innerHTML = Register();

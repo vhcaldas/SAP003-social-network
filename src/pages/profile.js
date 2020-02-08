@@ -15,31 +15,29 @@ function logOut() {
 
 function deleteCount() {
   document.querySelector('#myModal').classList.add('show');
-  document.querySelector('.modal-content').innerHTML = `<div>
-  <span>Deletar conta</span>
+  document.querySelector('.modal-content').innerHTML = `
+  <span>Quer mesmo deletar a conta?</span>
+  <p class='buttonModal'>
   <button onclick=document.getElementById('myModal').classList.remove('show')>
-    X
+    Cancelar
   </button>
   <button 
-  onclick=firebase.auth().currentUser.delete()
-  .then(document.getElementById('myModal').classList.remove('show'))>
+  onclick=firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).delete().then(firebase.auth().currentUser.delete())
+  >
     Deletar conta
   </button>
-  </div>`;
+  </p>
+  `;
 }
 
 function saveData() {
-  const name = document.querySelector('.name-profile').value;
-  const email = document.querySelector('.email-profile').value;
-  const job = document.querySelector('.profile-job').value;
-  const dateBorn = document.querySelector('.profile-born').value;
-  firebase
-    .firestore()
-    .collection('users')
-    .doc(firebase.auth().getUid(firebase.auth().currentUser.email))
-    .update(
-      { job, dateBorn },
-    );
+  const name = document.querySelector('#name-profile').value;
+  const email = document.querySelector('#email-profile').value;
+  const job = document.querySelector('#job-profile').value;
+  const dateBorn = document.querySelector('#born-profile').value;
+  firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).update(
+    { job, dateBorn },
+  );
   firebase.auth().currentUser.updateProfile({
     displayName: name,
     email,

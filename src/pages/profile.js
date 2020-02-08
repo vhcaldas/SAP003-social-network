@@ -1,3 +1,5 @@
+/* eslint-disable no-return-assign */
+
 import Button from '../components/button.js';
 import Input from '../components/input.js';
 import Menu from '../components/menu.js';
@@ -27,10 +29,10 @@ function deleteCount() {
 }
 
 function saveData() {
-  const name = document.querySelector('.name-perfil').value;
-  const email = document.querySelector('.email-perfil').value;
-  const job = document.querySelector('.perfil-job').value;
-  const dateBorn = document.querySelector('.perfil-born').value;
+  const name = document.querySelector('.name-profile').value;
+  const email = document.querySelector('.email-profile').value;
+  const job = document.querySelector('.profile-job').value;
+  const dateBorn = document.querySelector('.profile-born').value;
   firebase
     .firestore()
     .collection('users')
@@ -44,65 +46,63 @@ function saveData() {
   });
 }
 
-function Profile() {
-  const template = `
-  <div class="template">
-    ${Header({ class: 'header', classImg: 'logo' })}
-    <input type="checkbox" id="btn-menu"/>
-    <label for="btn-menu">&#9776;</label>
-    <nav class="menu" id="post">
-    <ul>
-    ${Menu({
+async function dataFirebase() {
+  const job = await firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).get()
+    .then(doc => doc.data().job);
+  const born = await firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).get()
+    .then(doc => doc.data().dateBorn);
+  return { job, born };
+}
+
+const template = (job, born) => `
+    <div class="template">
+      ${Header({ class: 'header', classImg: 'logo' })}
+      <input type="checkbox" id="btn-menu"/>
+      <label for="btn-menu">&#9776;</label>
+      <nav class="menu" id="post">
+      <ul>
+      ${Menu({
     name: 'Feed',
     link: pageFeed,
   })}
-    ${Menu({
+      ${Menu({
     name: 'Sair',
     link: logOut,
   })}
-    </ul> 
-    </nav>
-    </header>
-    <section class = "profile-section">
-      <h1 class="name-network">Heroínas</h1>
-      <form class="forms">
-        <label>Nome: </label/>
-        ${Input({
-    class: 'perfil',
+      </ul> 
+      </nav>
+      <section class = "profile-section">
+        <h1 class="name-network">Heroínas</h1>
+        <form class="forms">
+          <label>Nome: </label/>
+          ${Input({
+    id: 'name-profile',
+    placeholder: 'Mulher Maravilha',
     value: `${firebase.auth().currentUser.displayName}`,
     type: 'text',
   })}
-        <label>Email: </label/>
-        ${Input({
-    class: 'perfil',
+          <label>Email: </label/>
+          ${Input({
+    id: 'email-profile',
+    placeholder: 'exemplo@exe.com',
     value: `${firebase.auth().currentUser.email}`,
     type: 'text',
   })}
-        <label>Ocupação: </label/>
-        ${Input({
-    class: 'perfil-job',
-    value: `${firebase.firestore()
-      .collection('users')
-      .doc(firebase.auth().getUid(firebase.auth().currentUser.email))
-      .get()
-      .then((doc) => {
-        document.querySelector('.perfil-job').value = doc.data().job;
-      })}`,
+          <label>Ocupação: </label/>
+          ${Input({
+    id: 'job-profile',
+    placeholder: 'Desenvolvedora',
+    value: job,
     type: 'text',
   })}
-        <label>Data de nascimento: </label/> 
-        ${Input({
-    class: 'perfil-born',
-    value: `${firebase.firestore()
-      .collection('users')
-      .doc(firebase.auth().getUid(firebase.auth().currentUser.email))
-      .get()
-      .then((doc) => {
-        document.querySelector('.perfil-born').value = doc.data().dateBorn;
-      })}`,
+          <label>Data de nascimento: </label/> 
+          ${Input({
+    id: 'born-profile',
+    placeholder: '1991-07-25',
+    value: born,
     type: 'text',
   })}
-        <div class="group-button">
+          <div class="group-button">
           ${Button({
     id: 'saveData',
     title: 'Salvar dados',
@@ -113,17 +113,21 @@ function Profile() {
     title: 'Deletar conta',
     onClick: deleteCount,
   })}
-        </div>
-    </form>
-  </section>
-  <div id="myModal" class="modal">
-    <div class="modal-content">
+          </div>
+      </form>
+    </section>
+    <div id="myModal" class="modal">
+      <section class="modal-content">
+      </section>
     </div>
   </div>
-</div>
   `;
-  window.location.hash = 'profile';
-  return template;
+
+function Profile() {
+  dataFirebase().then(({ job, born }) => {
+    const main = document.querySelector('main');
+    return main.innerHTML = template(job, born);
+  });
 }
 
 export default Profile;

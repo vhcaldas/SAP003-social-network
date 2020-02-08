@@ -3,8 +3,8 @@ import Input from '../components/input.js';
 import Header from '../components/header.js';
 
 function loginEmail() {
-  const email = document.querySelector('.email-input').value;
-  const password = document.querySelector('.password-input').value;
+  const email = document.querySelector('.email-login').value;
+  const password = document.querySelector('.password-login').value;
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(() => {
       window.location.hash = 'post';
@@ -38,14 +38,14 @@ function Login() {
       <form class="forms">
         <label>E-mail:</label>
         ${Input({
-    class: 'email-input',
+    class: 'email-login',
     placeholder: 'exemplo@seudomínio.com',
     value: '',
     type: 'email',
   })}
         <label>Senha:</label>
         ${Input({
-    class: 'password-input ',
+    class: 'password-login',
     placeholder: '********',
     value: '',
     type: 'password',

@@ -8,10 +8,8 @@ import Header from '../components/header.js';
 /* eslint-disable no-use-before-define, no-alert, no-plusplus */
 
 function loadPost() {
-  const codUid = firebase.auth().currentUser.uid;
   firebase.firestore()
     .collection('Posts')
-    .where('user', '==', codUid)
     .orderBy('data', 'desc')
     .onSnapshot(
       (querySnapshot) => {
@@ -76,7 +74,7 @@ function likePost(event) {
 
 function editPost(event) {
   const idPost = event.target.dataset.id;
-  const select = document.querySelector(`li[data-id= '${idPost}']`).getElementsByClassName('card-post')[0];
+  const select = document.querySelector(`div[data-id= '${idPost}']`).getElementsByClassName('card-post')[0];
   select.setAttribute('contentEditable', 'true');
   select.focus();
   document.getElementById(idPost).querySelector('.primary-icon-save').style.display = 'inline';
@@ -85,7 +83,7 @@ function editPost(event) {
 function savePost(event) {
   const idPost = event.target.dataset.id;
   const time = firebase.firestore.FieldValue.serverTimestamp();
-  const newtext = document.querySelector(`li[data-id= '${idPost}']`).getElementsByClassName('card-post')[0].innerHTML;
+  const newtext = document.querySelector(`div[data-id= '${idPost}']`).getElementsByClassName('card-post')[0].innerHTML;
   firebase.firestore().collection('Posts').doc(idPost).update(
     {
       post: newtext,
@@ -105,7 +103,7 @@ function logOut() {
 
 function templatePosts(props) {
   const timeline = document.getElementById('list-post');
-  timeline.innerHTML += `<div id=${props.dataId} class='post-box'> 
+  timeline.innerHTML += `<li id=${props.dataId} class='post-box'> 
     ${Icons({
     dataId: props.dataId,
     class: 'delete',
@@ -131,7 +129,7 @@ function templatePosts(props) {
     title: '💾',
     onClick: savePost,
   })}
-    </div> `;
+    </li> `;
   document.getElementById(props.dataId).querySelector('.primary-icon-save').style.display = 'none';
 }
 

@@ -2,7 +2,6 @@
 
 ## Índice
 - [Rede Social Heroínas](#rede-social-heroínas)
-  - [Índice](#Índice)
   - [1. Resumo do Projeto.](#1-resumo-do-projeto)
   - [2. Características-Técnicas.](#2-características-técnicas)
   - [3. Histórias de Usuários Implementadas](#3-histórias-de-usuário-implementadas)
@@ -15,6 +14,8 @@
 Neste projeto, criamos a Rede Social **Heroínas**, que é voltada para programadoras que desejem se conectar com outras programadoras. O tema escolhido foi "Feminismo". 
 
 A nossa personagem principal é a Mulher Maravilha - que, agora, decidiu se desafiar e começar uma nova profissão - assim como nós, alunas da Laboratória! 
+
+É possível testar a plataforma através do login: teste@teste.com.br, senha _testando_.
 
 ## 2. Características Técnicas
 

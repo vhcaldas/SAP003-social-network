@@ -468,7 +468,6 @@ label {
   .name-user {
     display: flex;
     align-self: baseline;
-    margin-left: 5%;
   }
 
   .profile-section {
@@ -499,7 +498,7 @@ label {
 
   .primary-icon-like {
     right: 4%;
-    width: 3.5vw;
+    width: auto;
     height: 2.5vw;
   }
 
